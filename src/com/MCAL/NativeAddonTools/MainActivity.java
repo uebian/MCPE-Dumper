@@ -13,10 +13,11 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+		
+		decompile("/sdcard/libminecraftpe.so");
     }
 
-    public native String demangle(String name);
-	public native void decompile(String path,String path2);
+	public native void decompile(String path);
 
     static
 	{
