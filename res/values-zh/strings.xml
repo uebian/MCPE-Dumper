@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MCPE 反编译器</string>
+	<string name="introduction_0">这是一个可以帮助您反编译MCPE</string>
+	<string name="introduction_1">以获取对应函数原型表的应用</string>
+	<string name="introduction_2">点击下面的按钮开始</string>
+	<string name="start_compiling">开始反编译</string>
+	<string name="next">下一步</string>
+</resources>

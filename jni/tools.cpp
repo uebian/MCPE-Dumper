@@ -4,7 +4,6 @@
 #include <vector>
 #include <cxxabi.h>
 
-
 std::string jstringTostring(JNIEnv* env, jstring jstr)
 {
 	char* rtn = NULL;
@@ -49,7 +48,7 @@ JNIEXPORT void JNICALL Java_com_MCAL_NativeAddonTools_MainActivity_decompile(JNI
 	}
 	for(char letter:letters)
 	{
-		if(letter=='\n')
+		if(letter=='\n'||letter==' ')
 			continue;
 		if(letter=='_')
 		{

@@ -1,6 +1,46 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
-    
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:gravity="center"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/app_name"
+		android:layout_width="wrap_content"
+		android:textColor="#0398E5"
+		android:textSize="40sp"
+		android:gravity="center"
+		android:singleLine="true"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/introduction_0"
+		android:layout_width="wrap_content"
+		android:gravity="center"
+		android:singleLine="true"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/introduction_1"
+		android:layout_width="wrap_content"
+		android:gravity="center"
+		android:singleLine="true"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/introduction_2"
+		android:layout_width="wrap_content"
+		android:gravity="center"
+		android:singleLine="true"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="@string/start_compiling"
+		android:layout_width="match_parent"
+		android:onClick="startCompile"/>
+
 </LinearLayout>
+
