@@ -35,6 +35,8 @@ public class ChooseAddressActivity extends Activity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					Decompiler.decompile(ChooseAddressActivity.this.edit.getEditableText().toString());
+					Intent intent=new Intent(ChooseAddressActivity.this,FinalActivity.class);
+					startActivity(intent);
 				}
 			}).setNegativeButton(getString(R.string.dialog_cancel),new DialogInterface.OnClickListener()
 			{

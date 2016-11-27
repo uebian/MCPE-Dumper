@@ -15,13 +15,19 @@ public final class R {
     }
     public static final class layout {
         public static final int choose_activity=0x7f020000;
-        public static final int main_activity=0x7f020001;
+        public static final int final_activity=0x7f020001;
+        public static final int main_activity=0x7f020002;
     }
     public static final class string {
         public static final int app_name=0x7f030000;
         public static final int chooseactivity_title=0x7f03000b;
         public static final int dialog_cancel=0x7f03000d;
         public static final int dialog_continue=0x7f03000c;
+        public static final int exit_app=0x7f030011;
+        public static final int final_0=0x7f03000e;
+        public static final int final_1=0x7f03000f;
+        public static final int final_2=0x7f030010;
+        public static final int github_page=0x7f030012;
         public static final int introduction_0=0x7f030001;
         public static final int introduction_1=0x7f030002;
         public static final int introduction_2=0x7f030003;

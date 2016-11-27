@@ -14,7 +14,9 @@
 	<string name="chooseactivity_title">请输入文件地址:</string>
 	<string name="dialog_continue">继续</string>
 	<string name="dialog_cancel">取消</string>
-	
-	
-	
+	<string name="final_0">完成</string>
+	<string name="final_1">文件已经保存在</string>
+	<string name="final_2">同文件夹(*.methods.demangled.txt和*.methods.undemangled.txt)</string>
+	<string name="exit_app">退出程序</string>
+	<string name="github_page">Github页面</string>
 </resources>
