@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MCPELib Decompiler</string>
+    <string name="app_name">MCPE Function Table Generator</string>
 	<string name="introduction_0">This is an android app which can compile</string>
 	<string name="introduction_1">libminecraftpe.so into function table.</string>
 	<string name="introduction_2">Click the button to continue.</string>
