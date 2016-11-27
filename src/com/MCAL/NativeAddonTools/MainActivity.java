@@ -20,6 +20,7 @@ public class MainActivity extends Activity
 	public void startCompile(View view)
 	{
 		Intent intent=new Intent(this,ChooseAddressActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
 	

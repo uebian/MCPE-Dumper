@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.content.*;
 import android.net.*;
+import android.app.*;
 
 
 public class FinalActivity extends Activity
@@ -17,10 +18,6 @@ public class FinalActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.final_activity);
     }
-	public void exit(View view)
-	{
-		System.exit(0);
-	}
 	public void githubPage(View view)
 	{
 		Intent intent = new Intent();        

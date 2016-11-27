@@ -36,6 +36,7 @@ public class ChooseAddressActivity extends Activity
 				{
 					Decompiler.decompile(ChooseAddressActivity.this.edit.getEditableText().toString());
 					Intent intent=new Intent(ChooseAddressActivity.this,FinalActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 				}
 			}).setNegativeButton(getString(R.string.dialog_cancel),new DialogInterface.OnClickListener()

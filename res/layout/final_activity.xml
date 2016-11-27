@@ -29,14 +29,6 @@
 
 	<Button
 		android:layout_height="wrap_content"
-		android:text="@string/exit_app"
-		android:layout_width="match_parent"
-		android:gravity="center"
-		android:singleLine="true"
-		android:onClick="exit"/>
-
-	<Button
-		android:layout_height="wrap_content"
 		android:text="@string/github_page"
 		android:layout_width="match_parent"
 		android:singleLine="true"
