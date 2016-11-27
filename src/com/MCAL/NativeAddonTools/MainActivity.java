@@ -15,11 +15,7 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-		
-		//decompile("/sdcard/libminecraftpe.so");
     }
-
-	public native void decompile(String path);
 
 	public void startCompile(View view)
 	{

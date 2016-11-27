@@ -27,7 +27,12 @@ std::string jstringTostring(JNIEnv* env, jstring jstr)
 
 extern "C"
 {
-JNIEXPORT void JNICALL Java_com_MCAL_NativeAddonTools_MainActivity_decompile(JNIEnv* env, jobject thiz,jstring path)
+JNIEXPORT jboolean JNICALL Java_com_MCAL_NativeAddonTools_Decompiler_hasFile(JNIEnv* env, jobject thiz,jstring path)
+{
+	std::ifstream istream(jstringTostring(env,path).c_str());
+	return istream.is_open();
+}
+JNIEXPORT void JNICALL Java_com_MCAL_NativeAddonTools_Decompiler_decompile(JNIEnv* env, jobject thiz,jstring path)
 {
 	std::string filePath=jstringTostring(env,path);
 	

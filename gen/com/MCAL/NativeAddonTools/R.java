@@ -19,11 +19,19 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f030000;
+        public static final int chooseactivity_title=0x7f03000b;
+        public static final int dialog_cancel=0x7f03000d;
+        public static final int dialog_continue=0x7f03000c;
         public static final int introduction_0=0x7f030001;
         public static final int introduction_1=0x7f030002;
         public static final int introduction_2=0x7f030003;
+        public static final int message_error_file_not_found=0x7f030009;
+        public static final int message_error_no_enter=0x7f03000a;
+        public static final int message_running=0x7f030007;
         public static final int next=0x7f030005;
+        public static final int running=0x7f030006;
         public static final int start_compiling=0x7f030004;
+        public static final int title_error=0x7f030008;
     }
     public static final class style {
         public static final int AppTheme=0x7f040000;
