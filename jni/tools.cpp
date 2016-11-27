@@ -62,6 +62,8 @@ JNIEXPORT void JNICALL Java_com_MCAL_NativeAddonTools_Decompiler_decompile(JNIEn
 		}
 		bridgeString+=letter;
 	}
+	if(!bridgeString.empty())
+		strings.push_back(bridgeString);
 	for(std::string string:strings)
 	{
 		while(!string.empty())
