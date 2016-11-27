@@ -5,6 +5,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.view.*;
 import android.content.*;
+import android.net.*;
 
 
 public class MainActivity extends Activity
@@ -23,6 +24,19 @@ public class MainActivity extends Activity
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
+	public void githubPage(View view)
+	{
+		Intent intent = new Intent();        
+        intent.setAction("android.intent.action.VIEW");    
+        Uri content_url = Uri.parse("https://github.com/ModelPart/MCPELib-Decompiler.git");   
+        intent.setData(content_url);  
+        startActivity(intent);
+	}
+	public void exit(View view)
+	{
+		finish();
+	}
+	
 	
     static
 	{
