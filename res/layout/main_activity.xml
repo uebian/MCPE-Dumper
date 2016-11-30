@@ -5,56 +5,68 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical">
 
-	<LinearLayout
+	<ScrollView
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:gravity="top|center">
+		android:layout_height="fill_parent">
 
-	<TextView
-		android:layout_height="wrap_content"
-		android:text="@string/introduction_0"
-		android:layout_width="wrap_content"
-		android:gravity="center"
-		android:singleLine="true"/>
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="vertical">
 
-	<TextView
-		android:layout_height="wrap_content"
-		android:text="@string/introduction_1"
-		android:layout_width="wrap_content"
-		android:gravity="center"
-		android:singleLine="true"/>
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/main_activity_tag_tools"
+				android:layout_width="match_parent"/>
 
-	<TextView
-		android:layout_height="wrap_content"
-		android:text="@string/introduction_2"
-		android:layout_width="wrap_content"
-		android:gravity="center"
-		android:singleLine="true"/>
-	</LinearLayout>
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:orientation="vertical"
-		android:gravity="bottom|center">
-	<Button
-		android:layout_height="wrap_content"
-		android:text="@string/start_compiling"
-		android:layout_width="match_parent"
-		android:onClick="startCompile"/>
-	<Button
-		android:layout_height="wrap_content"
-		android:text="@string/github_page"
-		android:layout_width="match_parent"
-		android:onClick="githubPage"/>
-	
-		<Button
-			android:layout_height="wrap_content"
-			android:text="@string/exit_app"
-			android:layout_width="match_parent"
-			android:onClick="exit"/>
-	
-	</LinearLayout>
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/start_compiling"
+				android:layout_width="match_parent"
+				android:onClick="startCompile"/>
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/demangle_name"
+				android:layout_width="match_parent"
+				android:onClick="demangleName"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/main_activity_tag_others"
+				android:layout_width="match_parent"/>
+
+			<View
+				android:layout_height="1dp"
+				android:background="?android:attr/dividerVertical"
+				android:layout_width="match_parent"/>
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/about"
+				android:layout_width="match_parent"
+				android:onClick="toAbout"/>
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/github_page"
+				android:layout_width="match_parent"
+				android:onClick="githubPage"/>
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/exit_app"
+				android:layout_width="match_parent"
+				android:onClick="exit"/>
+
+		</LinearLayout>
+
+	</ScrollView>
 
 </LinearLayout>
 

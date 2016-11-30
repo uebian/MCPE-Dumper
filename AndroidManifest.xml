@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.MCAL.NativeAddonTools"
-      android:versionCode="2"
-      android:versionName="1.1">
+      android:versionCode="3"
+      android:versionName="1.2">
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-sdk android:minSdkVersion="4" />
     <application android:label="@string/app_name"
+		android:icon="@drawable/icon"
 		android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
                   android:label="@string/app_name">
@@ -15,11 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".ChooseAddressActivity"
-			android:label="@string/app_name">
+		<activity android:name=".MethodGeneratorActivity"
+			android:label="@string/activity_generator">
 		</activity>
-		<activity android:name=".FinalActivity"
-			android:label="@string/app_name">
+		<activity android:name=".DemangleNameActivity"
+			android:label="@string/activity_convertor">
+		</activity>
+		<activity android:name=".AboutActivity"
+			android:label="@string/about">
 		</activity>
     </application>
 </manifest> 

@@ -10,36 +10,53 @@ package com.MCAL.NativeAddonTools;
 public final class R {
     public static final class attr {
     }
+    public static final class drawable {
+        public static final int icon=0x7f020000;
+    }
     public static final class id {
-        public static final int chooseactivityEditText=0x7f050000;
+        public static final int chooseactivityCheckBoxUseLines=0x7f060004;
+        public static final int chooseactivityEditTextdemangledname=0x7f060002;
+        public static final int chooseactivityEditTextlibname=0x7f060001;
+        public static final int chooseactivityEditTextundemangledname=0x7f060003;
+        public static final int demanglenameactivityEditText=0x7f060000;
     }
     public static final class layout {
-        public static final int choose_activity=0x7f020000;
-        public static final int final_activity=0x7f020001;
-        public static final int main_activity=0x7f020002;
+        public static final int about_activity=0x7f030000;
+        public static final int demangle_name_activity=0x7f030001;
+        public static final int main_activity=0x7f030002;
+        public static final int method_list_generator_activity=0x7f030003;
     }
     public static final class string {
-        public static final int app_name=0x7f030000;
-        public static final int chooseactivity_title=0x7f03000b;
-        public static final int dialog_cancel=0x7f03000d;
-        public static final int dialog_continue=0x7f03000c;
-        public static final int exit_app=0x7f030011;
-        public static final int final_0=0x7f03000e;
-        public static final int final_1=0x7f03000f;
-        public static final int final_2=0x7f030010;
-        public static final int github_page=0x7f030012;
-        public static final int introduction_0=0x7f030001;
-        public static final int introduction_1=0x7f030002;
-        public static final int introduction_2=0x7f030003;
-        public static final int message_error_file_not_found=0x7f030009;
-        public static final int message_error_no_enter=0x7f03000a;
-        public static final int message_running=0x7f030007;
-        public static final int next=0x7f030005;
-        public static final int running=0x7f030006;
-        public static final int start_compiling=0x7f030004;
-        public static final int title_error=0x7f030008;
+        public static final int about=0x7f040016;
+        public static final int activity_convertor=0x7f04001b;
+        public static final int activity_generator=0x7f04001a;
+        public static final int app_name=0x7f040000;
+        public static final int chooseactivity_demangledname=0x7f04000f;
+        public static final int chooseactivity_libmcpe=0x7f04000d;
+        public static final int chooseactivity_title=0x7f040010;
+        public static final int chooseactivity_undemangledname=0x7f04000e;
+        public static final int clear=0x7f040018;
+        public static final int convert=0x7f040017;
+        public static final int copy=0x7f040019;
+        public static final int demangle_name=0x7f040002;
+        public static final int dialog_cancel=0x7f040012;
+        public static final int dialog_continue=0x7f040011;
+        public static final int done=0x7f040013;
+        public static final int exit_app=0x7f040007;
+        public static final int generate=0x7f040006;
+        public static final int github_page=0x7f040014;
+        public static final int main_activity_tag_others=0x7f040004;
+        public static final int main_activity_tag_tools=0x7f040003;
+        public static final int message_error_file_not_found=0x7f04000b;
+        public static final int message_error_no_enter=0x7f04000c;
+        public static final int message_running=0x7f040009;
+        public static final int next=0x7f040005;
+        public static final int running=0x7f040008;
+        public static final int start_compiling=0x7f040001;
+        public static final int title_error=0x7f04000a;
+        public static final int use_lines=0x7f040015;
     }
     public static final class style {
-        public static final int AppTheme=0x7f040000;
+        public static final int AppTheme=0x7f050000;
     }
 }

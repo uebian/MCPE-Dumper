@@ -1,2 +1,5 @@
-# MCPE-Native-Addons-Method-Table-Generator
-An android app which can convert libminecraftpe.so to function table.
+# Native-Addon-Tools
+An android app which can do these things:
+1.Convert libminecraftpe.so to function table.
+2.Demangle name.
+3.Generate templates.

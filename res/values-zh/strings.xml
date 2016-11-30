@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MCPE函数表 生成器</string>
-	<string name="introduction_0">这是一个可以帮助您分析libminecraftpe.so</string>
-	<string name="introduction_1">以获取对应函数原型表的应用</string>
-	<string name="introduction_2">点击下面的按钮开始</string>
-	<string name="start_compiling">开始生成</string>
+    <string name="app_name">Native-Addon小工具</string>
+	<string name="start_compiling">生成函数表</string>
 	<string name="next">下一步</string>
 	<string name="running">运行?</string>
 	<string name="message_running">点击继续开始运行，\n这一般需要7秒左右。</string>
 	<string name="title_error">错误</string>
 	<string name="message_error_file_not_found">未找到文件。</string>
-	<string name="message_error_no_enter">请输入文件地址。</string>
-	<string name="chooseactivity_title">请输入文件地址:</string>
+	<string name="message_error_no_enter">请输入libminecraftpe.so的地址。</string>
+	<string name="chooseactivity_libmcpe">请输入libminecraftpe.so地址:</string>
+	<string name="chooseactivity_undemangledname">请输入经过名称修饰的函数表输出地址:</string>
+	<string name="chooseactivity_demangledname">请输入未经过名称修饰的函数表输出地址:</string>
+	<string name="use_lines">标注行号</string>
+	<string name="chooseactivity_title">请完善信息：</string>
+	<string name="generate">开始生成</string>
 	<string name="dialog_continue">继续</string>
 	<string name="dialog_cancel">取消</string>
-	<string name="final_0">完成</string>
-	<string name="final_1">文件已经保存在</string>
-	<string name="final_2">同文件夹(*.methods.demangled.txt和*.methods.undemangled.txt)</string>
+	<string name="done">完成</string>
 	<string name="exit_app">退出程序</string>
 	<string name="github_page">Github页面</string>
+	<string name="about">关于</string>
+	<string name="demangle_name">反修饰函数名</string>
+	<string name="convert">转换</string>
+	<string name="clear">清空</string>
+	<string name="copy">复制到剪贴板</string>
+	<string name="main_activity_tag_tools">工具</string>
+	<string name="main_activity_tag_others">其他</string>
+	<string name="activity_generator">函数表生成器</string>
+	<string name="activity_convertor">反修饰器</string>
 </resources>

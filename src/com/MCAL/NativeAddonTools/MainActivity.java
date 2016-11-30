@@ -20,7 +20,7 @@ public class MainActivity extends Activity
 
 	public void startCompile(View view)
 	{
-		Intent intent=new Intent(this,ChooseAddressActivity.class);
+		Intent intent=new Intent(this,MethodGeneratorActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
@@ -28,13 +28,25 @@ public class MainActivity extends Activity
 	{
 		Intent intent = new Intent();        
         intent.setAction("android.intent.action.VIEW");    
-        Uri content_url = Uri.parse("https://github.com/ModelPart/MCPELib-Decompiler.git");   
+        Uri content_url = Uri.parse("https://github.com/ModelPart/Native-Addon-Tools.git");   
         intent.setData(content_url);  
         startActivity(intent);
 	}
 	public void exit(View view)
 	{
 		finish();
+	}
+	public void toAbout(View view)
+	{
+		Intent intent=new Intent(this,AboutActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
+	public void demangleName(View view)
+	{
+		Intent intent=new Intent(this,DemangleNameActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
 	}
 	
 	
