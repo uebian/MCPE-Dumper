@@ -28,4 +28,6 @@
 	<string name="main_activity_tag_others">其他</string>
 	<string name="activity_generator">函数表生成器</string>
 	<string name="activity_convertor">反修饰器</string>
+	<string name="copyRight">Copyright © 2016-2017 MCAL Team</string>
+	<string name="joinMCAL">加入MCAL Team!(QQ群)</string>
 </resources>

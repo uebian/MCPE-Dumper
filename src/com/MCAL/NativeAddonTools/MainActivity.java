@@ -24,14 +24,6 @@ public class MainActivity extends Activity
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
-	public void githubPage(View view)
-	{
-		Intent intent = new Intent();        
-        intent.setAction("android.intent.action.VIEW");    
-        Uri content_url = Uri.parse("https://github.com/ModelPart/Native-Addon-Tools.git");   
-        intent.setData(content_url);  
-        startActivity(intent);
-	}
 	public void exit(View view)
 	{
 		finish();

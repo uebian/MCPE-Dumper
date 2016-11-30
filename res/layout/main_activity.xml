@@ -54,12 +54,6 @@
 
 			<Button
 				android:layout_height="wrap_content"
-				android:text="@string/github_page"
-				android:layout_width="match_parent"
-				android:onClick="githubPage"/>
-
-			<Button
-				android:layout_height="wrap_content"
 				android:text="@string/exit_app"
 				android:layout_width="match_parent"
 				android:onClick="exit"/>

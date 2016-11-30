@@ -38,6 +38,7 @@ public final class R {
         public static final int clear=0x7f040018;
         public static final int convert=0x7f040017;
         public static final int copy=0x7f040019;
+        public static final int copyRight=0x7f04001c;
         public static final int demangle_name=0x7f040002;
         public static final int dialog_cancel=0x7f040012;
         public static final int dialog_continue=0x7f040011;
@@ -45,6 +46,7 @@ public final class R {
         public static final int exit_app=0x7f040007;
         public static final int generate=0x7f040006;
         public static final int github_page=0x7f040014;
+        public static final int joinMCAL=0x7f04001d;
         public static final int main_activity_tag_others=0x7f040004;
         public static final int main_activity_tag_tools=0x7f040003;
         public static final int message_error_file_not_found=0x7f04000b;
