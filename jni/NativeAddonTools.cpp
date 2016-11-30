@@ -108,45 +108,35 @@ JNIEXPORT jstring JNICALL Java_com_MCAL_NativeAddonTools_NativeAddonTools_demang
 {
 	std::string methodsName=jstringTostring(env,name);
 	
-	std::vector<char> letters;
 	std::string bridgeString;
 	std::vector<std::string>strings;
 	std::string result;
 	
 	for(char letter:methodsName)
 	{
-		letters.push_back(letter);
-	}
-	for(char letter:letters)
-	{
-		if(letter=='\n'||letter==' ')
-			continue;
-		if(letter=='_')
+		if(letter=='\n'&&!bridgeString.empty())
 		{
 			strings.push_back(bridgeString);
 			bridgeString="";
 		}
-		bridgeString+=letter;
+		else bridgeString+=letter;
 	}
 	if(!bridgeString.empty())
 		strings.push_back(bridgeString);
 	
 	for(std::string string:strings)
 	{
-		while(!string.empty())
+		if(abi::__cxa_demangle(string.c_str(),0,0,0))
 		{
-			if(string[0]!='_'||string[1]!='Z')
-				goto next;
-			if(abi::__cxa_demangle(string.c_str(),0,0,0))
-			{
-				result+=abi::__cxa_demangle(string.c_str(),0,0,0);
-				result+="\n";
-				goto next;
-			}
-			else
-				string=string.substr(0,string.length()-1);
+			result+=abi::__cxa_demangle(string.c_str(),0,0,0);
+			result+="\n";
 		}
-		next:;
+		else if(!string.empty())
+		{
+			result+="ERROR: ";
+			result+=string;
+			result+="\n";
+		}
 	}
 	return env->NewStringUTF(result.c_str());
 }
