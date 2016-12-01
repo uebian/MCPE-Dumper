@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.content.*;
 import android.net.*;
+import android.widget.*;
 
 public class AboutActivity extends Activity
 {
@@ -26,10 +27,11 @@ public class AboutActivity extends Activity
 	}
 	public void joinMCAL(View view)
 	{
-		joinQQGroup("hYhxG2RkDOOzaRnDIVdNWAM5aptKO4m8");
+		if(!joinQQGroup("hYhxG2RkDOOzaRnDIVdNWAM5aptKO4m8"))
+			Toast.makeText(this,getString(R.string.noQQ),50).show();
 	}
 	
-	public boolean joinQQGroup(String key)
+	protected boolean joinQQGroup(String key)
 	{
 		Intent intent = new Intent();
 		intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));

@@ -31,45 +31,74 @@
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/chooseactivity_libmcpe"/>
+				android:text="@string/projectName"/>
 
 			<EditText
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/chooseactivityEditTextlibname"
+				android:id="@+id/genactivityprojectName"
 				android:lines="1"
 				android:singleLine="true"/>
 
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/chooseactivity_demangledname"/>
+				android:text="@string/projectAppName"/>
 
 			<EditText
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/chooseactivityEditTextdemangledname"
+				android:id="@+id/genactivityprojectAppName"
 				android:lines="1"
 				android:singleLine="true"/>
 
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/chooseactivity_undemangledname"/>
+				android:text="@string/projectPackage"/>
 
 			<EditText
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:id="@+id/chooseactivityEditTextundemangledname"
+				android:id="@+id/genactivityprojectPackage"
 				android:lines="1"
 				android:singleLine="true"/>
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/targetMCPE"/>
+
+			<EditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/genactivitytargetMCPE"
+				android:lines="1"
+				android:singleLine="true"/>
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/temp_type"/>
+			
+			<Spinner
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:entries="@array/temps"
+				android:id="@+id/gentemplateactivitySpinner"/>
 
 			<CheckBox
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/use_lines"
-				android:id="@+id/chooseactivityCheckBoxUseLines"/>
+				android:text="@string/useJavaCode"
+				android:id="@+id/genactivityuseJavaCode"/>
 
+			<CheckBox
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/useAssets"
+				android:id="@+id/genactivityuseAssets"/>
+			
 		</LinearLayout>
 
 	</ScrollView>

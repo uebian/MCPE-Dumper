@@ -40,7 +40,12 @@ public class MainActivity extends Activity
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
-	
+	public void genTemplate(View view)
+	{
+		Intent intent=new Intent(this,GenTemplateActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
 	
     static
 	{

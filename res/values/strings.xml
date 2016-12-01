@@ -13,10 +13,10 @@
 	<string name="title_error">ERROR</string>
 	<string name="message_error_file_not_found">Counldn\'t found the file.</string>
 	<string name="message_error_no_enter">Please enter the path of libminecraftpe.so.</string>
-	<string name="chooseactivity_libmcpe">Please enter the path of libminecraftpe.so:</string>
-	<string name="chooseactivity_undemangledname">Please enter the path of undemangled methods table file:</string>
-	<string name="chooseactivity_demangledname">Please enter the path of demangled method table file:</string>
-	<string name="chooseactivity_title">Please prefect these informations:</string>
+	<string name="chooseactivity_libmcpe">The path of libminecraftpe.so:</string>
+	<string name="chooseactivity_undemangledname">The path of undemangled methods table file:</string>
+	<string name="chooseactivity_demangledname">The path of demangled method table file:</string>
+	<string name="chooseactivity_title">Prefect these informations:</string>
 	<string name="dialog_continue">Continue</string>
 	<string name="dialog_cancel">Cancel</string>
 	<string name="done">Done!</string>
@@ -30,4 +30,21 @@
 	<string name="activity_convertor">Demangler</string>
 	<string name="copyRight">Copyright © 2016-2017 MCAL Team</string>
 	<string name="joinMCAL">Join MCAL Team!(Chinese QQ Group)</string>
+	<string name="genTemplate">Generate Native-Addon Template</string>
+	<string name="templateGenerator">Template Generator</string>
+	<string name="noQQ">You haven\'t install QQ.</string>
+	<string name="projectName">Project Name:</string>
+	<string name="projectAppName">App Name:</string>
+	<string name="projectPackage">Package Name:</string>
+	<string name="useJavaCode">Use Android Activities</string>
+	<string name="targetMCPE">Target MCPE Version Name:</string>
+	<string name="error_project_name">Unavailable Project Name.</string>
+	<string name="error_package">Unavailable Package Name</string>
+	<string name="useAssets">Use Assets</string>
+	<string name="temp_type">Template Type:</string>
+	<string-array name="temps">
+		<item name="temp_empty">Empty</item>
+		<item name="temp_jni">With JNI_OnLoad</item>
+		<item name="temp_base">With Some MSHooks</item>
+	</string-array>
 </resources>

@@ -25,5 +25,8 @@
 		<activity android:name=".AboutActivity"
 			android:label="@string/about">
 		</activity>
+		<activity android:name=".GenTemplateActivity"
+			android:label="@string/templateGenerator">
+		</activity>
     </application>
 </manifest> 

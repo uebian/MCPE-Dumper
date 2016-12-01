@@ -35,6 +35,12 @@
 				android:text="@string/demangle_name"
 				android:layout_width="match_parent"
 				android:onClick="demangleName"/>
+			
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/genTemplate"
+				android:layout_width="match_parent"
+				android:onClick="genTemplate"/>
 
 			<TextView
 				android:layout_height="wrap_content"

@@ -28,6 +28,11 @@ std::string jstringTostring(JNIEnv* env, jstring jstr)
 
 extern "C"
 {
+JNIEXPORT void JNICALL Java_com_MCAL_NativeAddonTools_NativeAddonTools_generateTemplate(JNIEnv* env, jobject thiz,jstring path,jstring projectName,jstring appName,jstring packageName,jstring targetMCPE,jboolean useActivities,jboolean useAssets)
+{
+	
+}
+
 JNIEXPORT jboolean JNICALL Java_com_MCAL_NativeAddonTools_NativeAddonTools_hasFile(JNIEnv* env, jobject thiz,jstring path)
 {
 	std::ifstream istream(jstringTostring(env,path).c_str());
