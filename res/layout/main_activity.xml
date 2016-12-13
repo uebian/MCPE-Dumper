@@ -24,19 +24,19 @@
 				android:background="?android:attr/dividerVertical"
 				android:layout_width="match_parent"/>
 
-			<Button
+			<com.gc.materialdesign.views.ButtonFlat
 				android:layout_height="wrap_content"
 				android:text="@string/start_compiling"
 				android:layout_width="match_parent"
 				android:onClick="startCompile"/>
 
-			<Button
+			<com.gc.materialdesign.views.ButtonFlat
 				android:layout_height="wrap_content"
 				android:text="@string/demangle_name"
 				android:layout_width="match_parent"
 				android:onClick="demangleName"/>
 			
-			<Button
+			<com.gc.materialdesign.views.ButtonFlat
 				android:layout_height="wrap_content"
 				android:text="@string/genTemplate"
 				android:layout_width="match_parent"
@@ -52,13 +52,13 @@
 				android:background="?android:attr/dividerVertical"
 				android:layout_width="match_parent"/>
 
-			<Button
+			<com.gc.materialdesign.views.ButtonFlat
 				android:layout_height="wrap_content"
 				android:text="@string/about"
 				android:layout_width="match_parent"
 				android:onClick="toAbout"/>
 
-			<Button
+			<com.gc.materialdesign.views.ButtonFlat
 				android:layout_height="wrap_content"
 				android:text="@string/exit_app"
 				android:layout_width="match_parent"

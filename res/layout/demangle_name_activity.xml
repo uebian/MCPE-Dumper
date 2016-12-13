@@ -16,19 +16,19 @@
 			android:layout_height="match_parent"
 			android:id="@+id/demanglenameactivityEditText"/>
 
-		<Button
+		<com.gc.materialdesign.views.ButtonFlat
 			android:layout_height="50dp"
 			android:text="@string/clear"
 			android:layout_width="match_parent"
 			android:onClick="clear"/>
 		
-		<Button
+		<com.gc.materialdesign.views.ButtonFlat
 			android:layout_height="50dp"
 			android:text="@string/convert"
 			android:layout_width="match_parent"
 			android:onClick="convert"/>
 		
-		<Button
+		<com.gc.materialdesign.views.ButtonFlat
 			android:layout_height="50dp"
 			android:text="@string/copy"
 			android:layout_width="match_parent"

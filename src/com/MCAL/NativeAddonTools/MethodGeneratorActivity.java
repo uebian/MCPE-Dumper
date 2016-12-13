@@ -17,7 +17,7 @@ public class MethodGeneratorActivity extends Activity
 	private EditText mcpeLibEdit;
 	private EditText undemangledEdit;
 	private EditText demangledEdit;
-	private CheckBox useLines;
+	private com.gc.materialdesign.views.CheckBox useLines;
 	
     public void onCreate(Bundle savedInstanceState)
     {
@@ -27,7 +27,7 @@ public class MethodGeneratorActivity extends Activity
 		mcpeLibEdit= (EditText)findViewById(R.id.chooseactivityEditTextlibname);
 		undemangledEdit= (EditText)findViewById(R.id.chooseactivityEditTextundemangledname);
 		demangledEdit= (EditText)findViewById(R.id.chooseactivityEditTextdemangledname);
-		useLines= (CheckBox)findViewById(R.id.chooseactivityCheckBoxUseLines);
+		useLines= (com.gc.materialdesign.views.CheckBox)findViewById(R.id.chooseactivityCheckBoxUseLines);
 		
 		String storage=Environment.getExternalStorageDirectory().getPath();
 		
@@ -42,35 +42,33 @@ public class MethodGeneratorActivity extends Activity
 		new AlertDialog.Builder(this).setTitle(getString(R.string.running));
 		if(mcpeLibEdit.getText().toString().isEmpty())
 		{
-			new AlertDialog.Builder(this).setTitle(getString(R.string.title_error)).setMessage(getString(R.string.message_error_no_enter)).create().show();
+			new com.gc.materialdesign.widgets.Dialog(this,getString(R.string.title_error),getString(R.string.message_error_no_enter)).show();
 		}
 		else if(!mcpeLibEdit.getText().toString().isEmpty()&&NativeAddonTools.hasFile(mcpeLibEdit.getText().toString()))
 		{
-			new AlertDialog.Builder(this).setTitle(getString(R.string.running)).setMessage(getString(R.string.message_running)).setNeutralButton(getString(R.string.dialog_continue),new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
+			com.gc.materialdesign.widgets.Dialog dialog=new com.gc.materialdesign.widgets.Dialog(this,getString(R.string.running),getString(R.string.message_running));
+			dialog.addButtonAccept(getString(R.string.dialog_continue),new View.OnClickListener()
 				{
-					String storage=Environment.getExternalStorageDirectory().getPath();
-					NativeAddonTools.generateMethodTable(MethodGeneratorActivity.this.mcpeLibEdit.getEditableText().toString(),
-									   demangledEdit.getText().toString().isEmpty()?storage+"/MethodTableGenerator/demangled.txt":demangledEdit.getText().toString(),
-									   undemangledEdit.getText().toString().isEmpty()?storage+"/MethodTableGenerator/undemangled.txt":undemangledEdit.getText().toString(),
-									   useLines.isChecked());
-					Toast.makeText(MethodGeneratorActivity.this,getString(R.string.done),50).show();
-					finish();
-				}
-			}).setNegativeButton(getString(R.string.dialog_cancel),new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
-				{
-					
-				}
-			}).create().show();
+
+					@Override
+					public void onClick(View p1)
+					{
+						String storage=Environment.getExternalStorageDirectory().getPath();
+						NativeAddonTools.generateMethodTable(MethodGeneratorActivity.this.mcpeLibEdit.getEditableText().toString(),
+															 demangledEdit.getText().toString().isEmpty()?storage+"/MethodTableGenerator/demangled.txt":demangledEdit.getText().toString(),
+															 undemangledEdit.getText().toString().isEmpty()?storage+"/MethodTableGenerator/undemangled.txt":undemangledEdit.getText().toString(),
+															 useLines.isCheck());
+						com.gc.materialdesign.widgets.SnackBar bar=new com.gc.materialdesign.widgets.SnackBar(MethodGeneratorActivity.this,getString(R.string.done));
+						bar.show();
+						finish();
+					}
+				});
+			dialog.addButtonCancel(getString(R.string.dialog_cancel));
+			dialog.show();
 		}
 		else
 		{
-			new AlertDialog.Builder(this).setTitle(getString(R.string.title_error)).setMessage(getString(R.string.message_error_file_not_found)).create().show();
+			new com.gc.materialdesign.widgets.Dialog(this,getString(R.string.title_error),getString(R.string.message_error_file_not_found)).show();
 		}
 	}
 }

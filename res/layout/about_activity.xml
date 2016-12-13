@@ -25,13 +25,13 @@
 		android:orientation="vertical"
 		android:gravity="bottom|center">
 
-		<Button
+		<com.gc.materialdesign.views.ButtonFlat
 			android:layout_height="wrap_content"
 			android:text="@string/github_page"
 			android:layout_width="match_parent"
 			android:onClick="githubPage"/>
 		
-		<Button
+		<com.gc.materialdesign.views.ButtonFlat
 			android:layout_height="wrap_content"
 			android:text="@string/joinMCAL"
 			android:layout_width="match_parent"

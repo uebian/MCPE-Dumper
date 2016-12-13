@@ -64,7 +64,7 @@
 				android:lines="1"
 				android:singleLine="true"/>
 
-			<CheckBox
+			<com.gc.materialdesign.views.CheckBox
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/use_lines"
@@ -80,7 +80,7 @@
 		android:orientation="vertical"
 		android:gravity="bottom|center">
 
-		<Button
+		<com.gc.materialdesign.views.ButtonFlat
 			android:layout_height="wrap_content"
 			android:text="@string/generate"
 			android:layout_width="match_parent"

@@ -38,6 +38,7 @@ public class DemangleNameActivity extends Activity
 	{
 		ClipboardManager cmb = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);  
 		cmb.setText(editText.getText().toString());
-		Toast.makeText(this,getString(R.string.done),50).show();
+		com.gc.materialdesign.widgets.SnackBar bar=new com.gc.materialdesign.widgets.SnackBar(this,getString(R.string.done));
+		bar.show();
 	}
 }

@@ -87,13 +87,13 @@
 				android:entries="@array/temps"
 				android:id="@+id/gentemplateactivitySpinner"/>
 
-			<CheckBox
+			<com.gc.materialdesign.views.CheckBox
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/useJavaCode"
 				android:id="@+id/genactivityuseJavaCode"/>
 
-			<CheckBox
+			<com.gc.materialdesign.views.CheckBox
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/useAssets"
@@ -109,7 +109,7 @@
 		android:orientation="vertical"
 		android:gravity="bottom|center">
 
-		<Button
+		<com.gc.materialdesign.views.ButtonFlat
 			android:layout_height="wrap_content"
 			android:text="@string/generate"
 			android:layout_width="match_parent"

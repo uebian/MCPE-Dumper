@@ -19,8 +19,8 @@ public class GenTemplateActivity extends Activity
 	private EditText appName;
 	private EditText mcpeVersionName;
 	private EditText packageName;
-	private CheckBox useActivity;
-	private CheckBox useAssets;
+	private com.gc.materialdesign.views.CheckBox useActivity;
+	private com.gc.materialdesign.views.CheckBox useAssets;
 	@Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -32,8 +32,8 @@ public class GenTemplateActivity extends Activity
 		appName=(EditText)findViewById(R.id.genactivityprojectAppName);
 		mcpeVersionName=(EditText)findViewById(R.id.genactivitytargetMCPE);
 		packageName=(EditText)findViewById(R.id.genactivityprojectPackage);
-		useActivity=(CheckBox)findViewById(R.id.genactivityuseJavaCode);
-		useAssets=(CheckBox)findViewById(R.id.genactivityuseAssets);
+		useActivity=(com.gc.materialdesign.views.CheckBox)findViewById(R.id.genactivityuseJavaCode);
+		useAssets=(com.gc.materialdesign.views.CheckBox)findViewById(R.id.genactivityuseAssets);
 		
 		projectName.getText().append("MyNativeAddon");
 		appName.getText().append("My Native-Addon");
@@ -43,7 +43,7 @@ public class GenTemplateActivity extends Activity
 	
 	public void nextStep(View view)
 	{
-		NativeAddonTools.generateTemplate(Environment.getExternalStorageDirectory().getPath()+"AppProjects",projectName.getText().toString(),appName.getText().toString(),packageName.getText().toString(),mcpeVersionName.getText().toString(),useActivity.isEnabled(),useAssets.isEnabled());
+		NativeAddonTools.generateTemplate(Environment.getExternalStorageDirectory().getPath()+"AppProjects",projectName.getText().toString(),appName.getText().toString(),packageName.getText().toString(),mcpeVersionName.getText().toString(),useActivity.isCheck(),useAssets.isCheck());
 	}
 	
 	private String getMCPEVersionName()

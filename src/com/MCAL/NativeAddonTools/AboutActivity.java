@@ -28,7 +28,10 @@ public class AboutActivity extends Activity
 	public void joinMCAL(View view)
 	{
 		if(!joinQQGroup("hYhxG2RkDOOzaRnDIVdNWAM5aptKO4m8"))
-			Toast.makeText(this,getString(R.string.noQQ),50).show();
+		{
+			com.gc.materialdesign.widgets.SnackBar bar=new com.gc.materialdesign.widgets.SnackBar(this,getString(R.string.noQQ));
+			bar.show();
+		}
 	}
 	
 	protected boolean joinQQGroup(String key)
