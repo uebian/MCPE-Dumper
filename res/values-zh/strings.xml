@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Native-Addon小工具</string>
+    <string name="app_name">MCPE分析器</string>
 	<string name="start_compiling">生成函数表</string>
 	<string name="next">下一步</string>
 	<string name="running">运行?</string>

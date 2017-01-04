@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.MCAL.NativeAddonTools"
+      package="com.mcal.MCPEDumper"
       android:versionCode="3"
       android:versionName="1.2">
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -16,16 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".MethodGeneratorActivity"
+		<activity android:name=".ClassesActivity"
 			android:label="@string/activity_generator">
 		</activity>
-		<activity android:name=".DemangleNameActivity"
+		<activity android:name=".SymbolsActivity"
 			android:label="@string/activity_convertor">
 		</activity>
-		<activity android:name=".AboutActivity"
+		<activity android:name=".ClassActivity"
 			android:label="@string/about">
 		</activity>
-		<activity android:name=".GenTemplateActivity"
+		<activity android:name=".SymbolActivity"
 			android:label="@string/templateGenerator">
 		</activity>
     </application>

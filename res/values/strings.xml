@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Native-Addon Tools</string>
+    <string name="app_name">MCPE Dumper</string>
 	<string name="start_compiling">Generate method table</string>
 	<string name="demangle_name">Demangle method name</string>
 	<string name="main_activity_tag_tools">Tools</string>

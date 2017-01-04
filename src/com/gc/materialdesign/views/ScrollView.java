@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.*;
 
-import com.MCAL.NativeAddonTools.R;
+import com.mcal.MCPEDumper.R;
 
 
 public class ScrollView extends android.widget.ScrollView

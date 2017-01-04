@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.MCAL.NativeAddonTools.R;
+import com.mcal.MCPEDumper.R;
 import com.gc.materialdesign.utils.Utils;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;

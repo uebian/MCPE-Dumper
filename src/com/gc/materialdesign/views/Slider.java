@@ -19,7 +19,7 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.MCAL.NativeAddonTools.R;
+import com.mcal.MCPEDumper.R;
 import com.gc.materialdesign.utils.Utils;
 import com.nineoldandroids.view.ViewHelper;
 

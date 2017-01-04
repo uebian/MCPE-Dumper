@@ -1,6 +1,6 @@
 package com.gc.materialdesign.widgets;
 
-import com.MCAL.NativeAddonTools.R;
+import com.mcal.MCPEDumper.R;
 import com.gc.materialdesign.views.Slider;
 import com.gc.materialdesign.views.Slider.OnValueChangedListener;
 
