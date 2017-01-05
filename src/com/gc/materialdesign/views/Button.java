@@ -43,6 +43,15 @@ public abstract class Button extends CustomView
 		if (rippleColor == null)
 			rippleColor = makePressColor();
 	}
+	
+	public Button(Context context) 
+	{
+		super(context);
+		setDefaultProperties();
+		beforeBackground = backgroundColor;
+		if (rippleColor == null)
+			rippleColor = makePressColor();
+	}
 
 	protected void setDefaultProperties() 
 	{
@@ -60,7 +69,8 @@ public abstract class Button extends CustomView
 	float radius = -1;
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event) 
+	{
 		invalidate();
 		if (isEnabled()) 
 		{

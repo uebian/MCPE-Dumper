@@ -15,23 +15,22 @@
 		android:background="#FFFFFF"
 		android:padding="24dp">
 
-		<com.gc.materialdesign.views.ProgressBarCircularIndeterminate
-			android:id="@+id/progressBarCircularIndetermininate"
-			android:layout_width="32dp"
-			android:layout_height="32dp"
-			android:layout_centerVertical="true"
-			android:background="#1E88E5"/>
-
 		<TextView
 			android:id="@+id/title"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerVertical="true"
-			android:layout_toRightOf="@+id/progressBarCircularIndetermininate"
 			android:layout_marginLeft="8dp"
-			android:text="Title"
+			android:text=""
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:textColor="#000"/>
+
+		<com.gc.materialdesign.views.ProgressBarIndeterminateDeterminate
+			android:id="@+id/progressBarIndeterminateDeterminate"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="#1E88E5"
+			android:layout_alignBottom="@id/title"
+			/>
 
 	</RelativeLayout>
 

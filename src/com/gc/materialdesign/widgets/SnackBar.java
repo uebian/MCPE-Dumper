@@ -90,10 +90,24 @@ public class SnackBar extends Dialog{
 		return activity.dispatchTouchEvent(event);
 	}
 	
+	public interface OnBackPressedListener
+	{
+		void onBackPressed();
+	}
+	
+	OnBackPressedListener onBackPressedListener;
+	
+	public void setOnBackPressedListener(OnBackPressedListener l)
+	{
+		onBackPressedListener=l;
+	}
+	
 	@Override
 	public void onBackPressed()
 	{
-		
+		if(onBackPressedListener!=null)
+			onBackPressedListener.onBackPressed();
+		super.onBackPressed();
 	}
 	
 	@Override

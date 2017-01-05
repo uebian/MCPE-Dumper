@@ -23,6 +23,9 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
+		
+		FloatingMenu menu=new FloatingMenu(this);
+		menu.createFloatView();
 	}
 
 	public void chooseSystem(View view)
@@ -42,6 +45,7 @@ public class MainActivity extends Activity
 			dialog.show();
 		}
 	}
+	
 	
 	public void chooseSdcard(View view)
 	{
@@ -82,19 +86,36 @@ public class MainActivity extends Activity
 	
 	private void loadSo(final String path)
 	{
-		ProgressDialog dialog=new ProgressDialog(this,"loading...");
-		dialog.show();
+		showProgressDialog();
 		new Thread()
 		{
 			public void run()
 			{
-				Looper.prepare();
 				MCPEDumper.load(path);
+				MainActivity.this.toClassesActivity();
 			}
 		}.start();
-		dialog.dismiss();
 	}
 	
+	ProgressDialog dialog;
+	
+	public void showProgressDialog()
+	{
+		dialog=new ProgressDialog(MainActivity.this,"loading...");
+		dialog.show();
+	}
+	public void dismissProgressDialog()
+	{
+		if(dialog!=null)
+			dialog.dismiss();
+		dialog=null;
+	}
+	public void toClassesActivity()
+	{
+		Intent intent=new Intent(MainActivity.this,SymbolsActivity.class);
+		startActivity(intent);
+		dismissProgressDialog();
+	}
 	
     static
 	{

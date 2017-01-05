@@ -1,19 +1,23 @@
 import java.util.*;
 
-public class Elf{
+public class Elf
+{
 	public header hdr=new header();
 	public Vector<segment> segments = new Vector<segment>();
 	public Vector<section> sections = new Vector<section>();
-	
-	public Elf() {
+
+	public Elf()
+	{
 	}
 }
 
-class relocation{
+class relocation
+{
 	public int offset;
 	public int info;
 }
-class symbol{
+class symbol
+{
 	public String name;
 	public int value;
 	public int size;
@@ -22,7 +26,8 @@ class symbol{
 	public int bind;
 	public int type;
 }
-class header{
+class header
+{
 	public byte[] ident = new byte[16];
 	public int type ;
 	public int machine ;
@@ -38,7 +43,8 @@ class header{
 	public int shnum;
 	public int shstrndx;
 }
-class segment{
+class segment
+{
 	public int type;
 	public int offset;
 	public int vaddr;
@@ -49,7 +55,8 @@ class segment{
 	public int align;
 	public Vector<section>sections=new Vector<section>();
 }
-class section{
+class section
+{
 	public String name;
 	public int type;
 	public int flags;

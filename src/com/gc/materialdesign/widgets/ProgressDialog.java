@@ -15,9 +15,11 @@ import android.widget.TextView;
 import com.mcal.MCPEDumper.R;
 import com.gc.materialdesign.views.ButtonFlat;
 import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
+import com.gc.materialdesign.views.*;
 
-public class ProgressDialog extends android.app.Dialog{
-	
+public class ProgressDialog extends android.app.Dialog
+{
+
 	Context context;
 	View view;
 	View backView;
@@ -25,59 +27,65 @@ public class ProgressDialog extends android.app.Dialog{
 	TextView titleTextView;
 	int maxProgress;
 	int progressColor = -1;
-	
-	public ProgressDialog(Context context,String title) {
+
+	public ProgressDialog(Context context, String title)
+	{
 		super(context, android.R.style.Theme_Translucent);
 		this.title = title;
 		this.context = context;
 	}
-	
-	public ProgressDialog(Context context,String title, int progressColor) {
+
+	public ProgressDialog(Context context, String title, int progressColor)
+	{
 		super(context, android.R.style.Theme_Translucent);
 		this.title = title;
 		this.progressColor = progressColor;
 		this.context = context;
 	}
-	
+
 	@Override
-	  protected void onCreate(Bundle savedInstanceState)
-	  {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.gc_materialdesign_progress_dialog);
-	    
+
 		view = (RelativeLayout)findViewById(R.id.contentDialog);
 		backView = (RelativeLayout)findViewById(R.id.dialog_rootView);
 		backView.setOnTouchListener(new OnTouchListener()
-		{
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getX() < view.getLeft() 
-						|| event.getX() >view.getRight()
+			{
+				@Override
+				public boolean onTouch(View v, MotionEvent event)
+				{
+					if (event.getX() < view.getLeft() 
+						|| event.getX() > view.getRight()
 						|| event.getY() > view.getBottom() 
-						|| event.getY() < view.getTop()) {
-					dismiss();
+						|| event.getY() < view.getTop())
+					{
+						dismiss();
+					}
+					return false;
 				}
-				return false;
-			}
-		});
-		
+			});
+
 	    this.titleTextView = (TextView) findViewById(R.id.title);
 	    setTitle(title);
-	    if(progressColor != -1){
-	    	ProgressBarCircularIndeterminate progressBarCircularIndeterminate = (ProgressBarCircularIndeterminate) findViewById(R.id.progressBarCircularIndetermininate);
-	    	progressBarCircularIndeterminate.setBackgroundColor(progressColor);
+	    if (progressColor != -1)
+		{
+	    	ProgressBarIndeterminateDeterminate progressBarIndeterminateDeterminate = (ProgressBarIndeterminateDeterminate) findViewById(R.id.progressBarIndeterminateDeterminate);
+	    	progressBarIndeterminateDeterminate.setBackgroundColor(progressColor);
 	    }
-	    
-	    
+
+
 	}
-	
+
 	@Override
-	public void show() {
+	public void show()
+	{
 		// TODO 自动生成的方法存根
 		super.show();
 	}
-	
+
 	// GETERS & SETTERS
 
 	public String getTitle()
@@ -88,15 +96,16 @@ public class ProgressDialog extends android.app.Dialog{
 	public void setTitle(String title)
 	{
 		this.title = title;
-		if(title == null)
+		if (title == null)
 			titleTextView.setVisibility(View.GONE);
-		else{
+		else
+		{
 			titleTextView.setVisibility(View.VISIBLE);
 			titleTextView.setText(title);
 		}
 	}
-	
-	
+
+
 
 	public TextView getTitleTextView() 
 	{

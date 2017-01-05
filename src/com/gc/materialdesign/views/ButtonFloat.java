@@ -59,6 +59,24 @@ public class ButtonFloat extends Button{
 		addView(icon);
 	}
 	
+	public ButtonFloat(Context context)
+	{
+		super(context);
+		setBackgroundResource(R.drawable.background_button_float);
+		setBackgroundColor(backgroundColor);
+		sizeRadius = 28;
+		setDefaultProperties();
+		icon = new ImageView(context);
+		icon.setAdjustViewBounds(true);
+		icon.setScaleType(ScaleType.CENTER_CROP);
+		if(drawableIcon != null)
+			icon.setImageDrawable(drawableIcon);
+		LayoutParams params = new LayoutParams(Utils.dpToPx(sizeIcon, getResources()),Utils.dpToPx(sizeIcon, getResources()));
+		params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+		icon.setLayoutParams(params);
+		addView(icon);
+	}
+	
 	protected void setDefaultProperties()
 	{
 		rippleSpeed = Utils.dpToPx(2, getResources())*((float)2.5);
@@ -130,7 +148,8 @@ public class ButtonFloat extends Button{
 		}
 	}
 	
-	public ImageView getIcon() {
+	public ImageView getIcon() 
+	{
 		return icon;
 	}
 
