@@ -10,7 +10,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-public class LayoutRipple extends CustomView {
+public class LayoutRipple extends CustomView
+{
 
 	int background;
 	float rippleSpeed = 100f;
@@ -23,21 +24,26 @@ public class LayoutRipple extends CustomView {
 	Float xRippleOrigin;
 	Float yRippleOrigin;
 
-	public LayoutRipple(Context context, AttributeSet attrs) {
+	public LayoutRipple(Context context, AttributeSet attrs)
+	{
 		super(context, attrs);
 		setAttributes(attrs);
 	}
 
 	// Set atributtes of XML to View
-	protected void setAttributes(AttributeSet attrs) {
+	protected void setAttributes(AttributeSet attrs)
+	{
 
 		// Set background Color
 		// Color by resource
 		int bacgroundColor = attrs.getAttributeResourceValue(ANDROIDXML,
-				"background", -1);
-		if (bacgroundColor != -1) {
+															 "background", -1);
+		if (bacgroundColor != -1)
+		{
 			setBackgroundColor(getResources().getColor(bacgroundColor));
-		} else {
+		}
+		else
+		{
 			// Color by hexadecimal
 			background = attrs.getAttributeIntValue(ANDROIDXML, "background", -1);
 			if (background != -1)
@@ -48,10 +54,13 @@ public class LayoutRipple extends CustomView {
 		// Set Ripple Color
 		// Color by resource
 		int rippleColor = attrs.getAttributeResourceValue(MATERIALDESIGNXML,
-				"rippleColor", -1);
-		if (rippleColor != -1) {
+														  "rippleColor", -1);
+		if (rippleColor != -1)
+		{
 			setRippleColor(getResources().getColor(rippleColor));
-		} else {
+		}
+		else
+		{
 			// Color by hexadecimal
 			int background = attrs.getAttributeIntValue(MATERIALDESIGNXML, "rippleColor", -1);
 			if (background != -1)
@@ -59,20 +68,22 @@ public class LayoutRipple extends CustomView {
 			else
 				setRippleColor(makePressColor());
 		}
-		
+
 		rippleSpeed = attrs.getAttributeFloatValue(MATERIALDESIGNXML,
-				"rippleSpeed", 20f)*((float)2.5);
+												   "rippleSpeed", 20f) * ((float)2.5);
 	}
 
 	// Set color of background
-	public void setBackgroundColor(int color) {
+	public void setBackgroundColor(int color)
+	{
 		this.backgroundColor = color;
 		if (isEnabled())
 			beforeBackground = backgroundColor;
 		super.setBackgroundColor(color);
 	}
 
-	public void setRippleSpeed(int rippleSpeed) {
+	public void setRippleSpeed(int rippleSpeed)
+	{
 		this.rippleSpeed = rippleSpeed;
 	}
 
@@ -82,37 +93,49 @@ public class LayoutRipple extends CustomView {
 	float radius = -1;
 
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event)
+	{
 		invalidate();
-		if (isEnabled()) {
+		if (isEnabled())
+		{
 			isLastTouch = true;
-			if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			if (event.getAction() == MotionEvent.ACTION_DOWN)
+			{
 				radius = getHeight() / rippleSize;
 				x = event.getX();
 				y = event.getY();
-			} else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+			}
+			else if (event.getAction() == MotionEvent.ACTION_MOVE)
+			{
 				radius = getHeight() / rippleSize;
 				x = event.getX();
 				y = event.getY();
 				if (!((event.getX() <= getWidth() && event.getX() >= 0) && (event
-						.getY() <= getHeight() && event.getY() >= 0))) {
+					.getY() <= getHeight() && event.getY() >= 0)))
+				{
 					isLastTouch = false;
 					x = -1;
 					y = -1;
 				}
-			} else if (event.getAction() == MotionEvent.ACTION_UP) {
+			}
+			else if (event.getAction() == MotionEvent.ACTION_UP)
+			{
 				if ((event.getX() <= getWidth() && event.getX() >= 0)
-						&& (event.getY() <= getHeight() && event.getY() >= 0)) {
+					&& (event.getY() <= getHeight() && event.getY() >= 0))
+				{
 					radius++;
-				} else {
+				}
+				else
+				{
 					isLastTouch = false;
 					x = -1;
 					y = -1;
 				}
-			}if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-					isLastTouch = false;
-					x = -1;
-					y = -1;
+			}if (event.getAction() == MotionEvent.ACTION_CANCEL)
+			{
+				isLastTouch = false;
+				x = -1;
+				y = -1;
 			}
 		}
 		return true;
@@ -120,22 +143,26 @@ public class LayoutRipple extends CustomView {
 
 	@Override
 	protected void onFocusChanged(boolean gainFocus, int direction,
-			Rect previouslyFocusedRect) {
-		if (!gainFocus) {
+								  Rect previouslyFocusedRect)
+	{
+		if (!gainFocus)
+		{
 			x = -1;
 			y = -1;
 		}
 	}
 
 	@Override
-	public boolean onInterceptTouchEvent(MotionEvent ev) {
+	public boolean onInterceptTouchEvent(MotionEvent ev)
+	{
 		// super.onInterceptTouchEvent(ev);
 		return true;
 	}
 
-	public Bitmap makeCircle() {
+	public Bitmap makeCircle()
+	{
 		Bitmap output = Bitmap.createBitmap(getWidth(), getHeight(),
-				Config.ARGB_8888);
+											Config.ARGB_8888);
 		Canvas canvas = new Canvas(output);
 		canvas.drawARGB(0, 0, 0, 0);
 		Paint paint = new Paint();
@@ -148,7 +175,8 @@ public class LayoutRipple extends CustomView {
 		canvas.drawCircle(x, y, radius, paint);
 		if (radius > getHeight() / rippleSize)
 			radius += rippleSpeed;
-		if (radius >= getWidth()) {
+		if (radius >= getWidth())
+		{
 			x = -1;
 			y = -1;
 			radius = getHeight() / rippleSize;
@@ -158,9 +186,11 @@ public class LayoutRipple extends CustomView {
 		return output;
 	}
 
-	protected void onDraw(Canvas canvas) {
+	protected void onDraw(Canvas canvas)
+	{
 		super.onDraw(canvas);
-		if (x != -1) {
+		if (x != -1)
+		{
 			Rect src = new Rect(0, 0, getWidth(), getHeight());
 			Rect dst = new Rect(0, 0, getWidth(), getHeight());
 			canvas.drawBitmap(makeCircle(), src, dst, null);
@@ -173,7 +203,8 @@ public class LayoutRipple extends CustomView {
 	 * 
 	 * @return
 	 */
-	protected int makePressColor() {
+	protected int makePressColor()
+	{
 		int r = (this.backgroundColor >> 16) & 0xFF;
 		int g = (this.backgroundColor >> 8) & 0xFF;
 		int b = (this.backgroundColor >> 0) & 0xFF;
@@ -184,19 +215,23 @@ public class LayoutRipple extends CustomView {
 	}
 
 	@Override
-	public void setOnClickListener(OnClickListener l) {
+	public void setOnClickListener(OnClickListener l)
+	{
 		onClickListener = l;
 	}
 
-	public void setRippleColor(int rippleColor) {
+	public void setRippleColor(int rippleColor)
+	{
 		this.rippleColor = rippleColor;
 	}
 
-	public void setxRippleOrigin(Float xRippleOrigin) {
+	public void setxRippleOrigin(Float xRippleOrigin)
+	{
 		this.xRippleOrigin = xRippleOrigin;
 	}
 
-	public void setyRippleOrigin(Float yRippleOrigin) {
+	public void setyRippleOrigin(Float yRippleOrigin)
+	{
 		this.yRippleOrigin = yRippleOrigin;
 	}
 

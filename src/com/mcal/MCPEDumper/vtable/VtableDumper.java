@@ -1,14 +1,19 @@
+package com.mcal.MCPEDumper.vtable;
 import java.io.*;
 import java.util.*;
+import com.mcal.MCPEDumper.nativeapi.*;
+import android.content.*;
+import android.widget.*;
 
 public class VtableDumper
 {
-	public static String[] dump(String path,String classn) throws Exception
+	public static MCPEVtable dump(String path,String classn)
 	{
 		Dump d=new Dump(path);
 
 		symbol sym=null;
 		section symsec=null;
+		
 		for (section sec:d.elf.sections)
 		{
 			if (sec.type == 2 || sec.type == 11)
@@ -27,9 +32,7 @@ public class VtableDumper
 		}
 
 		if (sym == null)
-		{
-			throw new  Exception("Vtable doesn't found");
-		}
+			return null;
 
 		HashMap<Integer,symbol>map=new HashMap<Integer,symbol>();//为了排序
 		int c=0;
@@ -47,6 +50,7 @@ public class VtableDumper
 						{
 							++c;
 							symbol vsym=d.getSym(symsec, rel.info >> 8);
+							
 							map.put(rel.offset, vsym);
 						}
 					}
@@ -58,17 +62,13 @@ public class VtableDumper
 			}
 		}
 		
-		String[] returnValue=new String[c];
-		int counter=0;
-
+		Vector<MCPESymbol> virtual_table_symbols=new Vector<MCPESymbol>();
+		
 		for (int j=0;j < sym.size / 4 - 2;++j)
 		{
 			if (map.get(sym.value + 8 + j * 4) != null)
-			{
-				returnValue[counter]=(map.get(sym.value + 8 + j * 4).name);
-				++counter;
-			}
+				virtual_table_symbols.addElement(new MCPESymbol(map.get(sym.value + 8 + j * 4).name,MCPEDumper.demangle(map.get(sym.value + 8 + j * 4).name),2));
 		}
-		return returnValue;
+		return new MCPEVtable(classn,virtual_table_symbols);
 	}
 }

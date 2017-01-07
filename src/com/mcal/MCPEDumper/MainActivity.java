@@ -11,21 +11,18 @@ import com.mcal.MCPEDumper.util.*;
 
 import com.gc.materialdesign.widgets.ProgressDialog;
 import com.mcal.MCPEDumper.nativeapi.*;
+import com.mcal.MCPEDumper.vtable.*;
 
 
 public class MainActivity extends Activity
 {
-
+	private String path;
 	private static final int FILE_SELECT_CODE = 0;
-    /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
-		
-		FloatingMenu menu=new FloatingMenu(this);
-		menu.createFloatView();
 	}
 
 	public void chooseSystem(View view)
@@ -87,11 +84,13 @@ public class MainActivity extends Activity
 	private void loadSo(final String path)
 	{
 		showProgressDialog();
+		this.path=path;
 		new Thread()
 		{
 			public void run()
 			{
 				MCPEDumper.load(path);
+				Dumper.readData(path);
 				MainActivity.this.toClassesActivity();
 			}
 		}.start();
@@ -112,7 +111,10 @@ public class MainActivity extends Activity
 	}
 	public void toClassesActivity()
 	{
+		Bundle bundle=new Bundle();
+		bundle.putString("filePath",path);
 		Intent intent=new Intent(MainActivity.this,SymbolsActivity.class);
+		intent.putExtras(bundle);
 		startActivity(intent);
 		dismissProgressDialog();
 	}

@@ -4,13 +4,16 @@ import android.widget.*;
 import android.content.*;
 import android.graphics.*;
 import android.view.View.*;
+import com.gc.materialdesign.widgets.*;
 
 public class FloatingMenu
 {
+	public static int xPos=0;
+	public static int yPos=0;
 	public boolean isAdded = false;
 	public WindowManager wm;
 	public WindowManager.LayoutParams params; 
-	public View floatView;
+	public FloatingMenuView floatView;
 
 	Context context;
 
@@ -19,40 +22,27 @@ public class FloatingMenu
 		context = c;
 	}
 
-	public void createFloatView()
+	public void show()
 	{  
-		floatView = new Button(context);
+		floatView = new FloatingMenuView(context,this);
 		floatView.setClickable(true);
-		
-		
-		floatView.setBackgroundResource(R.drawable.box_pink);
-		floatView.setOnClickListener(new View.OnClickListener()
-			{
 
-				@Override
-				public void onClick(View p1)
-				{
-					Intent intent=new Intent(context,FloatMenuActivity.class);
-					context.startActivity(intent);
-				}
-				
-			
-		});
 		wm = (WindowManager) context.getApplicationContext()  .getSystemService(Context.WINDOW_SERVICE);  
 		params = new WindowManager.LayoutParams();  
 
-	
+
 		params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;  
-	
-		params.format = PixelFormat.RGBA_8888; // 设置图片格式，效果为背景透明  
+
+		params.format = PixelFormat.RGBA_8888;
 
 
-		params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL  
-			| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;    
-		params.width = 50;  
-		params.height = 50;  
-  
-		
+		params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;    
+		params.width = wm.getDefaultDisplay().getWidth()/2;
+		params.height = wm.getDefaultDisplay().getHeight()/2;
+		params.x = xPos;
+		params.y = yPos;
+
+
 		floatView.setOnTouchListener(new OnTouchListener() {  
 				int lastX, lastY;  
 				int paramX, paramY;  
@@ -74,12 +64,19 @@ public class FloatingMenu
 							params.y = paramY + dy;    
 							wm.updateViewLayout(floatView, params);  
 							break;
-					}  
+					}
+					FloatingMenu.xPos=params.x;
+					FloatingMenu.yPos=params.y;
 					return false;
 				}  
 			});  
 
-		wm.addView(floatView, params);  
+		wm.addView(floatView, params);
 		isAdded = true;
+	}
+	
+	public void dismiss()
+	{
+		wm.removeView(floatView);
 	}
 }

@@ -8,52 +8,89 @@ import android.view.*;
 import android.content.*;
 import com.mcal.MCPEDumper.nativeapi.*;
 import com.gc.materialdesign.widgets.*;
+import android.view.ViewStub.*;
+import butterknife.*;
+import android.widget.AdapterView.*;
 
 public class SymbolsActivity extends Activity
 {
-    /** Called when the activity is first created. */
 	private ListView list; 
     private List<Map<String, Object>> data; 
+	private String path;
     @Override 
     public void onCreate(Bundle savedInstanceState)
 	{ 
         super.onCreate(savedInstanceState); 
-        setContentView(R.layout.classes_activity);
-        list = (ListView)findViewById(R.id.classes_activity_list_view); 
+        setContentView(R.layout.symbols_activity);
+		
+        list = (ListView)findViewById(R.id.symbols_activity_list_view); 
 		data = getData();
 		ClassesAdapter adapter = new ClassesAdapter(this);
 		list.setAdapter(adapter);
+		list.setOnItemClickListener(new ItemClickListener());
+		
+		path=getIntent().getExtras().getString("filePath");
     }
 
     private List<Map<String, Object>> getData() 
     { 
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(); 
         Map<String, Object> map;
-        for (long i=0;i < MCPEDumper.getSize();++i)
+        for (int i=0;i < Dumper.symbols.size();++i)
         { 
             map = new HashMap<String, Object>(); 
-			if(MCPEDumper.getTypeAt(i)==1)
+			if(Dumper.symbols.get(i).getType()==1)
 				map.put("img", R.drawable.box_blue); 
-			else if(MCPEDumper.getTypeAt(i)==2)
+			else if(Dumper.symbols.get(i).getType()==2)
 				map.put("img", R.drawable.box_red);
 			else map.put("img", R.drawable.box_pink);
-            map.put("title", MCPEDumper.getDemangledNameAt(i)); 
-            map.put("info", MCPEDumper.getNameAt(i)); 
-            list.add(map); 
+			map.put("title", Dumper.symbols.get(i).getDemangledName());
+            map.put("info", Dumper.symbols.get(i).getName());
+			map.put("type", Dumper.symbols.get(i).getType());
+            list.add(map);
         } 
         return list; 
     } 
+	
+	public void showSearch(View view)
+	{
+		Intent i=new Intent(this,SearchActivity.class);
+		startActivity(i);
+	}
+	
+	public void showMenu(View view)
+	{
+		Intent i=new Intent(this,MenuActivity.class);
+		startActivity(i);
+	}
  
     static class ViewHolder 
     { 
-		public ImageView img; 
-		public TextView title; 
-		public TextView info; 
+		public ImageView img;
+		public TextView title;
+		public TextView info;
+		public int type;
     }
+	
+	private final class ItemClickListener implements OnItemClickListener
+	{
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View view, int arg2,long arg3)
+		{
+			Bundle bundle=new Bundle();
+			bundle.putString("demangledName",(String)(((ViewHolder)view.getTag()).title.getText()));
+			bundle.putString("name",(String)(((ViewHolder)view.getTag()).info.getText()));
+			bundle.putInt("type",((ViewHolder)view.getTag()).type);
+			bundle.putString("filePath",path);
+			Intent intent=new Intent(SymbolsActivity.this,SymbolActivity.class);
+			intent.putExtras(bundle);
+			startActivity(intent);
+		}
+	}
 
     public class ClassesAdapter extends BaseAdapter 
     {     
-		private LayoutInflater mInflater = null; 
+		private LayoutInflater mInflater = null;
 		private ClassesAdapter(Context context) 
 		{ 
 			this.mInflater = LayoutInflater.from(context); 
@@ -85,11 +122,11 @@ public class SymbolsActivity extends Activity
 			if (convertView == null) 
 			{ 
 				holder = new ViewHolder(); 
-				convertView = mInflater.inflate(R.layout.classes_activity_list_item, null); 
+				convertView = mInflater.inflate(R.layout.symbol_list_item, null); 
 				holder.img = (ImageView)convertView.findViewById(R.id.img); 
-				holder.title = (TextView)convertView.findViewById(R.id.classesactivitylistitemTextViewtop); 
-				holder.info = (TextView)convertView.findViewById(R.id.classesactivitylistitemTextViewbottom); 
-				convertView.setTag(holder); 
+				holder.title = (TextView)convertView.findViewById(R.id.symbolsactivitylistitemTextViewtop); 
+				holder.info = (TextView)convertView.findViewById(R.id.symbolsactivitylistitemTextViewbottom); 
+				convertView.setTag(holder);
 			}
 			else 
 			{ 
@@ -97,10 +134,13 @@ public class SymbolsActivity extends Activity
 			} 
 			holder.img.setBackgroundResource((Integer)data.get(position).get("img")); 
 			holder.title.setText((String)data.get(position).get("title")); 
-			holder.info.setText((String)data.get(position).get("info")); 
+			holder.info.setText((String)data.get(position).get("info"));
+			holder.type=((int)data.get(position).get("type"));
 
 			return convertView; 
-		} 
+		}
+		
+		
     }
 	
 	SnackBar bar;

@@ -1,3 +1,4 @@
+package com.mcal.MCPEDumper.vtable;
 import java.util.*;
 public class Dump
 {

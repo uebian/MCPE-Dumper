@@ -12,16 +12,19 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ButtonFlat extends Button {
-	
+public class ButtonFlat extends Button
+{
+
 	TextView textButton;
 
-	public ButtonFlat(Context context, AttributeSet attrs) {
+	public ButtonFlat(Context context, AttributeSet attrs)
+	{
 		super(context, attrs);
-		
+
 	}
-	
-	protected void setDefaultProperties(){
+
+	protected void setDefaultProperties()
+	{
 		minHeight = 36;
 		minWidth = 88;
 		rippleSize = 3;
@@ -32,29 +35,36 @@ public class ButtonFlat extends Button {
 	}
 
 	@Override
-	protected void setAttributes(AttributeSet attrs) {
+	protected void setAttributes(AttributeSet attrs)
+	{
 		// Set text button
 		String text = null;
-		int textResource = attrs.getAttributeResourceValue(ANDROIDXML,"text",-1);
-		if(textResource != -1){
+		int textResource = attrs.getAttributeResourceValue(ANDROIDXML, "text", -1);
+		if (textResource != -1)
+		{
 			text = getResources().getString(textResource);
-		}else{
-			text = attrs.getAttributeValue(ANDROIDXML,"text");
 		}
-		if(text != null){
-			textButton = new TextView(getContext());
-			textButton.setText(text.toUpperCase());
-			textButton.setTextColor(backgroundColor);
-			textButton.setTypeface(null, Typeface.BOLD);
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-			params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-			textButton.setLayoutParams(params);
-			addView(textButton);
+		else
+		{
+			text = attrs.getAttributeValue(ANDROIDXML, "text");
 		}
-		int bacgroundColor = attrs.getAttributeResourceValue(ANDROIDXML,"background",-1);
-		if(bacgroundColor != -1){
+		if(text==null)
+			text="";
+		textButton = new TextView(getContext());
+		textButton.setText(text.toUpperCase());
+		textButton.setTextColor(backgroundColor);
+		textButton.setTypeface(null, Typeface.BOLD);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		params.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+		textButton.setLayoutParams(params);
+		addView(textButton);
+		int bacgroundColor = attrs.getAttributeResourceValue(ANDROIDXML, "background", -1);
+		if (bacgroundColor != -1)
+		{
 			setBackgroundColor(getResources().getColor(bacgroundColor));
-		}else{
+		}
+		else
+		{
 			// Color by hexadecimal
 			// Color by hexadecimal
 			background = attrs.getAttributeIntValue(ANDROIDXML, "background", -1);
@@ -62,59 +72,67 @@ public class ButtonFlat extends Button {
 				setBackgroundColor(background);
 		}
 	}
-	
-	
+
+
 	@Override
-	protected void onDraw(Canvas canvas) {
+	protected void onDraw(Canvas canvas)
+	{
 		super.onDraw(canvas);
-		if (x != -1) {
-			
+		if (x != -1)
+		{
+
 			Paint paint = new Paint();
 			paint.setAntiAlias(true);
 			paint.setColor(makePressColor());
 			canvas.drawCircle(x, y, radius, paint);
-			if(radius > getHeight()/rippleSize)
+			if (radius > getHeight() / rippleSize)
 				radius += rippleSpeed;
-			if(radius >= getWidth()){
+			if (radius >= getWidth())
+			{
 				x = -1;
 				y = -1;
-				radius = getHeight()/rippleSize;
-				if(onClickListener != null&& clickAfterRipple)
+				radius = getHeight() / rippleSize;
+				if (onClickListener != null && clickAfterRipple)
 					onClickListener.onClick(this);
 			}
 			invalidate();
 		}		
-		
+
 	}
-	
+
 	/**
 	 * Make a dark color to ripple effect
 	 * @return
 	 */
 	@Override
-	protected int makePressColor(){
+	protected int makePressColor()
+	{
 		return Color.parseColor("#88DDDDDD");	
 	}
-	
-	public void setText(String text){
+
+	public void setText(String text)
+	{
 		textButton.setText(text.toUpperCase());
 	}
-	
+
 	// Set color of background
-	public void setBackgroundColor(int color){
+	public void setBackgroundColor(int color)
+	{
 		backgroundColor = color;
-		if(isEnabled())
+		if (isEnabled())
 			beforeBackground = backgroundColor;
 		textButton.setTextColor(color);
 	}
 
 	@Override
-	public TextView getTextView() {
+	public TextView getTextView()
+	{
 		return textButton;
 	}
-	
-	public String getText(){
-        	return textButton.getText().toString();
+
+	public String getText()
+	{
+		return textButton.getText().toString();
  	}
 
 }

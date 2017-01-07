@@ -55,7 +55,7 @@
 		android:layout_marginRight="90dp"
 		android:layout_marginBottom="120dp"
 		android:background="#CCCCCC"
-		android:text="Choose from sdcard"/>
+		android:text="Pick from sdcard"/>
 
 	<TextView
 		android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
 		android:layout_marginRight="90dp"
 		android:layout_marginBottom="50dp"
 		android:background="#CCCCCC"
-		android:text="Choose from installed"/>
+		android:text="Pick from installed"/>
 
 </RelativeLayout>
 

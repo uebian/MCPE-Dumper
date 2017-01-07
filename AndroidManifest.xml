@@ -3,6 +3,7 @@
 	package="com.mcal.MCPEDumper"
 	android:versionCode="3"
 	android:versionName="1.2">
+	<uses-permission android:name="android.permission.GET_TASKS"/>
 	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>  
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,20 +19,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".ClassesActivity"
-			android:label="Classws">
+		<activity android:name="com.mcal.MCPEDumper.ClassesActivity"
+			android:label="Classes">
 		</activity>
-		<activity android:name=".SymbolsActivity"
+		<activity android:name="com.mcal.MCPEDumper.SymbolsActivity"
 			android:label="Symbols">
 		</activity>
-		<activity android:name=".ClassActivity"
+		<activity android:name="com.mcal.MCPEDumper.ClassActivity"
 			android:label="Class">
 		</activity>
-		<activity android:name=".SymbolActivity"
+		<activity android:name="com.mcal.MCPEDumper.SymbolActivity"
 			android:label="Symbol">
 		</activity>
-		<activity android:name=".FloatMenuActivity"
-			android:label="Float Menu">
+		<activity android:name="com.mcal.MCPEDumper.MenuActivity"
+			android:label="Menu">
+		</activity>
+		<activity android:name="com.mcal.MCPEDumper.SearchActivity"
+			android:label="Search Symbols">
+		</activity>
+		<activity android:name="com.mcal.MCPEDumper.VtableActivity"
+			android:label="Vtable'">
+		</activity>
+		<activity android:name="com.mcal.MCPEDumper.SaveActivity"
+			android:label="Save">
 		</activity>
     </application>
 </manifest> 

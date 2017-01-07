@@ -74,15 +74,16 @@ JNIEXPORT jboolean JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_hasFile
 	std::ifstream istream(jstringTostring(env,path).c_str());
 	return istream.is_open();
 }
-JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getNameAt(JNIEnv* env, jobject thiz,jlong pos)
+JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getNameAt(JNIEnv* env, jobject thiz,jint pos)
 {
 	return env->NewStringUTF(mcpeSymbolsList[pos].name.c_str());
 }
-JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getDemangledNameAt(JNIEnv* env, jobject thiz,jlong pos)
+JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getDemangledNameAt(JNIEnv* env, jobject thiz,jint pos)
 {
-	return env->NewStringUTF(abi::__cxa_demangle(mcpeSymbolsList[pos].name.c_str(),0,0,0));
+	char*name=abi::__cxa_demangle(mcpeSymbolsList[pos].name.c_str(),0,0,0);
+	return env->NewStringUTF(name?name:"");
 }
-JNIEXPORT jlong JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getSize(JNIEnv* env, jobject thiz)
+JNIEXPORT jint JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getSize(JNIEnv* env, jobject thiz)
 {
 	return mcpeSymbolsList.size();
 }
