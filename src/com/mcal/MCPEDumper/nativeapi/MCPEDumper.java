@@ -9,4 +9,5 @@ public class MCPEDumper
 	public static native short getTypeAt(int pos);
 	public static native int getSize();
 	public static native String demangle(String name);
+	public static native String mangle(String name);
 }

@@ -43,5 +43,11 @@
 		<activity android:name="com.mcal.MCPEDumper.SaveActivity"
 			android:label="Save">
 		</activity>
+		<activity android:name="com.mcal.MCPEDumper.NameDemanglerActivity"
+			android:label="Name Demangler">
+		</activity>
+		<activity android:name="com.mcal.MCPEDumper.NameManglerActivity"
+			android:label="Name Mangler">
+		</activity>
     </application>
 </manifest> 

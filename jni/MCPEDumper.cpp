@@ -22,6 +22,19 @@ struct MCPESymbol
 
 std::vector<MCPESymbol>mcpeSymbolsList;
 
+char const* mangleName(std::string const& name)
+{
+	for(MCPESymbol symbol:mcpeSymbolsList)
+		if(abi::__cxa_demangle(symbol.name.c_str(),0,0,0)&&std::string(abi::__cxa_demangle(symbol.name.c_str(),0,0,0))==name)
+			return symbol.name.c_str();
+	
+	std::vector<std::string> nameMethods;
+	std::vector<std::string> nameClasses;
+	std::string nameMain="";
+	
+	return 0;
+}
+
 void loadSymbols(const elfio& reader )
 {
 	mcpeSymbolsList.clear();
@@ -96,6 +109,41 @@ JNIEXPORT void JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_load(JNIEnv
 	elfio reader;
 	reader.load(jstringTostring(env,path));
 	loadSymbols(reader);
+}
+JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_mangle(JNIEnv* env, jobject thiz,jstring name)
+{
+	std::string methodsName=jstringTostring(env,name);
+	
+	std::string bridgeString;
+	std::vector<std::string>strings;
+	std::string result;
+	
+	for(char letter:methodsName)
+	{
+		if(letter=='\n'&&letter!=' '&&!bridgeString.empty())
+		{
+			strings.push_back(bridgeString);
+			bridgeString="";
+		}
+		else bridgeString+=letter;
+	}
+	if(!bridgeString.empty())
+		strings.push_back(bridgeString);
+	
+	for(std::string string:strings)
+	{
+		if(mangleName(string))
+		{
+			result+=mangleName(string);
+			result+="\n";
+		}
+		else if(!string.empty())
+		{
+			result+=string;
+			result+="\n";
+		}
+	}
+	return env->NewStringUTF(result.c_str());
 }
 JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_demangle(JNIEnv* env, jobject thiz,jstring name)
 {

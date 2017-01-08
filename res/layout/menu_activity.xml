@@ -1,6 +1,91 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
-    
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Tools"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_marginLeft="10dp"/>
+
+	<View
+		android:layout_height="1dp"
+		android:layout_width="match_parent"
+		android:background="#0096FF"
+		android:layout_marginLeft="10dp"/>
+
+	<com.gc.materialdesign.views.LayoutRipple
+		android:onClick="toNameDemangler"
+		android:layout_width="match_parent"
+		android:layout_height="75dp">
+
+		<ImageView
+			android:layout_width="65dp"
+			android:layout_height="65dp"
+			android:id="@+id/imageViewNameDemangler"
+			android:src="@drawable/objects"
+			android:paddingLeft="5dp"
+			android:paddingTop="5dp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:text="Name Demangler"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_toRightOf="@id/imageViewNameDemangler"/>
+
+		</com.gc.materialdesign.views.LayoutRipple>
+		
+	<com.gc.materialdesign.views.LayoutRipple
+		android:onClick="toNameMangler"
+		android:layout_width="match_parent"
+		android:layout_height="75dp">
+
+		<ImageView
+			android:layout_width="65dp"
+			android:layout_height="65dp"
+			android:id="@+id/imageViewNameMangler"
+			android:src="@drawable/objects"
+			android:paddingLeft="5dp"
+			android:paddingTop="5dp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:text="Name Mangler"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_toRightOf="@id/imageViewNameMangler"/>
+
+	</com.gc.materialdesign.views.LayoutRipple>
+
+	<com.gc.materialdesign.views.LayoutRipple
+		android:layout_width="match_parent"
+		android:onClick="showFloatingMenu"
+		android:layout_height="75dp">
+
+		<ImageView
+			android:layout_width="65dp"
+			android:layout_height="65dp"
+			android:id="@+id/imageViewFloatingMenu"
+			android:src="@drawable/box_pink"
+			android:paddingLeft="5dp"
+			android:paddingTop="5dp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:text="Floating Menu"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_toRightOf="@id/imageViewFloatingMenu"/>
+
+	</com.gc.materialdesign.views.LayoutRipple>
+
 </LinearLayout>
+

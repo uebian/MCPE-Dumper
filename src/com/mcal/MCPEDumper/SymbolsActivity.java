@@ -61,6 +61,9 @@ public class SymbolsActivity extends Activity
 	public void showMenu(View view)
 	{
 		Intent i=new Intent(this,MenuActivity.class);
+		Bundle bundle=new Bundle();
+		bundle.putString("filePath",path);
+		i.putExtras(bundle);
 		startActivity(i);
 	}
  

@@ -5,20 +5,22 @@ import android.widget.*;
 import com.gc.materialdesign.views.*;
 import com.mcal.MCPEDumper.nativeapi.*;
 import java.util.*;
+import android.os.*;
 
 public class FloatingMenuView extends RelativeLayout
 {
-	FloatingMenu menu;
-	Context context;
-	EditText editText;
-	TextView text;
+	private FloatingMenu menu;
+	private Context context;
+	private EditText editText;
+	private TextView text;
+	private String path;
 	
-	FloatingMenuView(Context c,FloatingMenu menu)
+	FloatingMenuView(Context c,FloatingMenu menu,String filePath)
 	{
 		super(c);
 		this.menu=menu;
 		this.context=c;
-		
+		this.path=filePath;
 		View view = LayoutInflater.from(c).inflate(R.layout.floating_menu, null); 
 		ButtonFlat imageButtonClose=(ButtonFlat)view.findViewById(R.id.floatingmenuButtonClose);
 		imageButtonClose.setOnClickListener(new View.OnClickListener()
@@ -28,7 +30,7 @@ public class FloatingMenuView extends RelativeLayout
 				public void onClick(View p1)
 				{
 					FloatingMenuView.this.menu.dismiss();
-					new FloatingButton(FloatingMenuView.this.context).show();
+					new FloatingButton(FloatingMenuView.this.context,path).show();
 				}
 
 		});
@@ -63,7 +65,11 @@ public class FloatingMenuView extends RelativeLayout
 				@Override
 				public void onClick(View p1)
 				{
-					FloatingMenuView.this.context.startActivity(new Intent(FloatingMenuView.this.context,SymbolsActivity.class));
+					Intent intent=new Intent(context,SymbolsActivity.class);
+					Bundle bundle=new Bundle();
+					bundle.putString("filePath",path);
+					intent.putExtras(bundle);
+					context.startActivity(intent);
 				}
 
 			});

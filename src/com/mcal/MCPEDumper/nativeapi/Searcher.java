@@ -6,6 +6,8 @@ public class Searcher
 	public static Vector<MCPESymbol> search(String key)
 	{
 		Vector<MCPESymbol> returnValue=new Vector<MCPESymbol>();
+		if(key==null||key.isEmpty()||key==""||key==" ")
+			return returnValue;
 		try
 		{
 			for (MCPESymbol symbol:Dumper.symbols)

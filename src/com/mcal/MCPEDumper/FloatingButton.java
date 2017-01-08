@@ -15,11 +15,12 @@ public class FloatingButton
 	public WindowManager.LayoutParams params; 
 	public View floatView;
 
-	Context context;
-
-	FloatingButton(Context c)
+	private Context context;
+	private String path;
+	FloatingButton(Context c,String p)
 	{
 		context = c;
+		path=p;
 	}
 
 	public void show()
@@ -35,7 +36,7 @@ public class FloatingButton
 				@Override
 				public void onClick(View p1)
 				{
-					FloatingMenu menu=new FloatingMenu(context);
+					FloatingMenu menu=new FloatingMenu(context,path);
 					menu.show();
 					FloatingButton.this.dismiss();
 				}

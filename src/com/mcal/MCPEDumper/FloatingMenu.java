@@ -15,16 +15,17 @@ public class FloatingMenu
 	public WindowManager.LayoutParams params; 
 	public FloatingMenuView floatView;
 
-	Context context;
-
-	FloatingMenu(Context c)
+	private Context context;
+	private String path;
+	FloatingMenu(Context c,String filePath)
 	{
 		context = c;
+		path=filePath;
 	}
 
 	public void show()
 	{  
-		floatView = new FloatingMenuView(context,this);
+		floatView = new FloatingMenuView(context,this,path);
 		floatView.setClickable(true);
 
 		wm = (WindowManager) context.getApplicationContext()  .getSystemService(Context.WINDOW_SERVICE);  
