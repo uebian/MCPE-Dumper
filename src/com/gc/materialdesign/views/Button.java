@@ -37,13 +37,13 @@ public abstract class Button extends CustomView
 		super(context, attrs);
 		setDefaultProperties();
 		clickAfterRipple = attrs.getAttributeBooleanValue(MATERIALDESIGNXML,
-				"animate", true);
+														  "animate", true);
 		setAttributes(attrs);
 		beforeBackground = backgroundColor;
 		if (rippleColor == null)
 			rippleColor = makePressColor();
 	}
-	
+
 	public Button(Context context) 
 	{
 		super(context);
@@ -87,7 +87,8 @@ public abstract class Button extends CustomView
 				x = event.getX();
 				y = event.getY();
 				if (!((event.getX() <= getWidth() && event.getX() >= 0) && (event
-						.getY() <= getHeight() && event.getY() >= 0))) {
+					.getY() <= getHeight() && event.getY() >= 0)))
+				{
 					isLastTouch = false;
 					x = -1;
 					y = -1;
@@ -96,12 +97,16 @@ public abstract class Button extends CustomView
 			else if (event.getAction() == MotionEvent.ACTION_UP)
 			{
 				if ((event.getX() <= getWidth() && event.getX() >= 0)
-						&& (event.getY() <= getHeight() && event.getY() >= 0)) {
+					&& (event.getY() <= getHeight() && event.getY() >= 0))
+				{
 					++radius;
-					if (!clickAfterRipple && onClickListener != null) {
+					if (!clickAfterRipple && onClickListener != null)
+					{
 						onClickListener.onClick(this);
 					}
-				} else {
+				}
+				else
+				{
 					isLastTouch = false;
 					x = -1;
 					y = -1;
@@ -119,8 +124,10 @@ public abstract class Button extends CustomView
 
 	@Override
 	protected void onFocusChanged(boolean gainFocus, int direction,
-			Rect previouslyFocusedRect) {
-		if (!gainFocus) {
+								  Rect previouslyFocusedRect)
+	{
+		if (!gainFocus)
+		{
 			x = -1;
 			y = -1;
 		}
@@ -135,8 +142,8 @@ public abstract class Button extends CustomView
 	public Bitmap makeCircle()
 	{
 		Bitmap output = Bitmap.createBitmap(
-				getWidth() - Utils.dpToPx(0, getResources()), getHeight()
-						- Utils.dpToPx(0, getResources()), Config.ARGB_8888);
+			getWidth() - Utils.dpToPx(0, getResources()), getHeight()
+			- Utils.dpToPx(0, getResources()), Config.ARGB_8888);
 		Canvas canvas = new Canvas(output);
 		canvas.drawARGB(0, 0, 0, 0);
 		Paint paint = new Paint();
@@ -155,7 +162,7 @@ public abstract class Button extends CustomView
 		}
 		return output;
 	}
-	
+
 	protected int makePressColor() 
 	{
 		int r = (this.backgroundColor >> 16) & 0xFF;
@@ -179,13 +186,16 @@ public abstract class Button extends CustomView
 		this.backgroundColor = color;
 		if (isEnabled())
 			beforeBackground = backgroundColor;
-		try {
+		try
+		{
 			LayerDrawable layer = (LayerDrawable) getBackground();
 			GradientDrawable shape = (GradientDrawable) layer
-					.findDrawableByLayerId(R.id.shape_bacground);
+				.findDrawableByLayerId(R.id.shape_bacground);
 			shape.setColor(backgroundColor);
 			rippleColor = makePressColor();
-		} catch (Exception ex) {
+		}
+		catch (Exception ex)
+		{
 			// Without bacground
 		}
 	}

@@ -1,44 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MCPE分析器</string>
-	<string name="start_compiling">生成函数表</string>
-	<string name="next">下一步</string>
-	<string name="running">运行?</string>
-	<string name="message_running">点击继续开始运行，\n这一般需要7秒左右。</string>
-	<string name="title_error">错误</string>
-	<string name="message_error_file_not_found">未找到文件。</string>
-	<string name="message_error_no_enter">请输入libminecraftpe.so的地址。</string>
-	<string name="chooseactivity_libmcpe">文件libminecraftpe.so的地址:</string>
-	<string name="chooseactivity_undemangledname">经过名称修饰的函数表的输出地址:</string>
-	<string name="chooseactivity_demangledname">未经过名称修饰的函数表的输出地址:</string>
-	<string name="use_lines">标注行号</string>
-	<string name="chooseactivity_title">请完善信息：</string>
-	<string name="generate">开始生成</string>
-	<string name="dialog_continue">继续</string>
-	<string name="dialog_cancel">取消</string>
-	<string name="done">完成</string>
-	<string name="exit_app">退出程序</string>
-	<string name="github_page">Github页面</string>
-	<string name="about">关于</string>
-	<string name="demangle_name">反修饰函数名</string>
-	<string name="convert">转换</string>
-	<string name="clear">清空</string>
-	<string name="copy">复制到剪贴板</string>
-	<string name="main_activity_tag_tools">工具</string>
-	<string name="main_activity_tag_others">其他</string>
-	<string name="activity_generator">函数表生成器</string>
-	<string name="activity_convertor">反修饰器</string>
-	<string name="copyRight">Copyright © 2016-2017 MCAL Team</string>
-	<string name="joinMCAL">加入MCAL Team!(QQ群)</string>
-	<string name="genTemplate">生成Native-Addon模板</string>
-	<string name="templateGenerator">模板生成器</string>
-	<string name="noQQ">您没有安装QQ</string>
-	<string name="projectName">工程名:</string>
-	<string name="projectAppName">应用名:</string>
-	<string name="projectPackage">包名:</string>
-	<string name="useJavaCode">使用Android活动</string>
-	<string name="targetMCPE">适配我的世界携带版版本:</string>
-	<string name="error_project_name">工程名不合理。</string>
-	<string name="error_package">包名不合理。</string>
-	<string name="useAssets">使用资源文件夹</string>
 </resources>
