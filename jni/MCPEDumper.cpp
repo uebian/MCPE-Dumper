@@ -22,19 +22,6 @@ struct MCPESymbol
 
 std::vector<MCPESymbol>mcpeSymbolsList;
 
-char const* mangleName(std::string const& name)
-{
-	for(MCPESymbol symbol:mcpeSymbolsList)
-		if(abi::__cxa_demangle(symbol.name.c_str(),0,0,0)&&std::string(abi::__cxa_demangle(symbol.name.c_str(),0,0,0))==name)
-			return symbol.name.c_str();
-	
-	std::vector<std::string> nameMethods;
-	std::vector<std::string> nameClasses;
-	std::string nameMain="";
-	
-	return 0;
-}
-
 void loadSymbols(const elfio& reader )
 {
 	mcpeSymbolsList.clear();
@@ -100,9 +87,13 @@ JNIEXPORT jint JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getSize(JNI
 {
 	return mcpeSymbolsList.size();
 }
-JNIEXPORT jshort JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getTypeAt(JNIEnv* env, jobject thiz,jlong pos)
+JNIEXPORT jshort JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getTypeAt(JNIEnv* env, jobject thiz,jint pos)
 {
 	return (jshort)((short)mcpeSymbolsList[pos].type);
+}
+JNIEXPORT jshort JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_getBindAt(JNIEnv* env, jobject thiz,jint pos)
+{
+	return (jshort)((short)mcpeSymbolsList[pos].bind);
 }
 JNIEXPORT void JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_load(JNIEnv* env, jobject thiz,jstring path)
 {
@@ -110,40 +101,10 @@ JNIEXPORT void JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_load(JNIEnv
 	reader.load(jstringTostring(env,path));
 	loadSymbols(reader);
 }
-JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_mangle(JNIEnv* env, jobject thiz,jstring name)
+JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_demangleOnly(JNIEnv* env, jobject thiz,jstring jname)
 {
-	std::string methodsName=jstringTostring(env,name);
-	
-	std::string bridgeString;
-	std::vector<std::string>strings;
-	std::string result;
-	
-	for(char letter:methodsName)
-	{
-		if(letter=='\n'&&letter!=' '&&!bridgeString.empty())
-		{
-			strings.push_back(bridgeString);
-			bridgeString="";
-		}
-		else bridgeString+=letter;
-	}
-	if(!bridgeString.empty())
-		strings.push_back(bridgeString);
-	
-	for(std::string string:strings)
-	{
-		if(mangleName(string))
-		{
-			result+=mangleName(string);
-			result+="\n";
-		}
-		else if(!string.empty())
-		{
-			result+=string;
-			result+="\n";
-		}
-	}
-	return env->NewStringUTF(result.c_str());
+	char*name=abi::__cxa_demangle(jstringTostring(env,jname).c_str(),0,0,0);
+	return env->NewStringUTF(name?name:"");
 }
 JNIEXPORT jstring JNICALL Java_com_mcal_MCPEDumper_nativeapi_MCPEDumper_demangle(JNIEnv* env, jobject thiz,jstring name)
 {

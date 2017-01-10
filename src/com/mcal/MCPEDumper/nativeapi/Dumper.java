@@ -11,7 +11,7 @@ public class Dumper
 		symbols.clear();
 		for(int i=0;i<MCPEDumper.getSize();++i)
 		{
-			symbols.addElement(new MCPESymbol(MCPEDumper.getNameAt(i),MCPEDumper.getDemangledNameAt(i),MCPEDumper.getTypeAt(i)));
+			symbols.addElement(new MCPESymbol(MCPEDumper.getNameAt(i),MCPEDumper.getDemangledNameAt(i),MCPEDumper.getTypeAt(i),MCPEDumper.getBindAt(i)));
 		}
 	}
 }

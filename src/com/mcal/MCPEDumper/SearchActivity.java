@@ -8,6 +8,6 @@ public class SearchActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_activity);
+		setContentView(R.layout.search_activity);
 	}
 }

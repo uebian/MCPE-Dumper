@@ -8,6 +8,7 @@ import android.view.*;
 import com.mcal.MCPEDumper.vtable.VtableDumper;
 import com.mcal.MCPEDumper.nativeapi.*;
 import android.content.*;
+import com.mcal.MCPEDumper.vtable.*;
 
 public class SymbolActivity extends Activity
 {
@@ -74,13 +75,8 @@ public class SymbolActivity extends Activity
 		TextView textSymbolName=(TextView)findViewById(R.id.symbolactivityTextViewSymbolMainName);
 		textSymbolName.setText(symbolName);
 
-		String typeName=new String();
-		if (type == 1)
-			typeName = "Object";
-		else if (type == 2)
-			typeName = "Method";
-		else
-			typeName = "Unknow";
+		String typeName=Tables.symbol_type.get(type);
+		
 		TextView textTypeName=(TextView)findViewById(R.id.symbolactivityTextViewType);
 		textTypeName.setText(typeName);
 	

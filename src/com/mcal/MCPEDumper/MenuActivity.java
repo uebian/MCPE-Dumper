@@ -22,11 +22,6 @@ public class MenuActivity extends Activity
 		startActivity(new Intent(this,NameDemanglerActivity.class));
 	}
 	
-	public void toNameMangler(View view)
-	{
-		startActivity(new Intent(this,NameManglerActivity.class));
-	}
-	
 	public void showFloatingMenu(View view)
 	{
 		new FloatingButton(this,path).show();

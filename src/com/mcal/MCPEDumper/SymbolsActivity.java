@@ -163,7 +163,6 @@ public class SymbolsActivity extends Activity
 					SymbolsActivity.this.finish();
 				}
 
-
 			});
 	} 
 }

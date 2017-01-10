@@ -1,18 +1,20 @@
 package com.mcal.MCPEDumper.vtable;
 import java.util.*;
+
 public class Tables
 {
-	static HashMap<Integer,String>version=new HashMap<Integer,String>();
-	static HashMap<Integer,String>type=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>version=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>type=new HashMap<Integer,String>();
 
-	static HashMap<Integer,String>section_type=new HashMap<Integer,String>();
-	static HashMap<Integer,String>segment_type=new HashMap<Integer,String>();
-	static HashMap<Integer,String>segment_flag=new HashMap<Integer,String>();
-	static HashMap<Integer,String>symbol_bind=new HashMap<Integer,String>();
-	static HashMap<Integer,String>symbol_type=new HashMap<Integer,String>();
-	static HashMap<Integer,String>dynamic_tag=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>section_type=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>segment_type=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>segment_flag=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>symbol_bind=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>symbol_type=new HashMap<Integer,String>();
+	public static HashMap<Integer,String>dynamic_tag=new HashMap<Integer,String>();
 
-	static{
+	static
+	{
 		version.put(0, "None");
 		version.put(1, "Current");
 

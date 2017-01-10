@@ -67,8 +67,17 @@ public class VtableDumper
 		for (int j=0;j < sym.size / 4 - 2;++j)
 		{
 			if (map.get(sym.value + 8 + j * 4) != null)
-				virtual_table_symbols.addElement(new MCPESymbol(map.get(sym.value + 8 + j * 4).name,MCPEDumper.demangle(map.get(sym.value + 8 + j * 4).name),2));
+				if(getSymbol(map.get(sym.value + 8 + j * 4).name)!=null)
+					virtual_table_symbols.addElement(getSymbol(map.get(sym.value + 8 + j * 4).name));
 		}
 		return new MCPEVtable(classn,virtual_table_symbols);
+	}
+	
+	static public MCPESymbol getSymbol(String name)
+	{
+		for(MCPESymbol symbol:Dumper.symbols)
+			if(symbol.getName().equals(name))
+				return symbol;
+		return null;
 	}
 }

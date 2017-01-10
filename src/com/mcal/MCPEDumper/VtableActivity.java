@@ -8,6 +8,8 @@ import android.view.*;
 import java.util.*;
 import com.mcal.MCPEDumper.nativeapi.*;
 import com.mcal.MCPEDumper.vtable.*;
+import com.mcal.MCPEDumper.util.*;
+import com.gc.materialdesign.widgets.*;
 
 public class VtableActivity extends Activity
 {
@@ -20,7 +22,6 @@ public class VtableActivity extends Activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
-		// TODO: Implement this method
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.vtable_activity);
 		
@@ -40,7 +41,23 @@ public class VtableActivity extends Activity
 	
 	public void save(View view)
 	{
+		String [] strings=new String[vtable.getVtables().size()];
+		for(int i=0;i<vtable.getVtables().size();++i)
+			strings[i]=vtable.getVtables().get(i).getName();
 		
+		FileSaver saver=new FileSaver(this,Environment.getExternalStorageDirectory().toString()+"/MCPEDumper/vtables/",name+".txt",strings);
+		saver.save();
+		
+		
+		String [] strings_=new String[vtable.getVtables().size()];
+		for(int i=0;i<vtable.getVtables().size();++i)
+			strings_[i]=vtable.getVtables().get(i).getDemangledName();
+		String demangledName=MCPEDumper.demangleOnly(name);
+		String fileName=demangledName.substring(demangledName.lastIndexOf(" ")+1,demangledName.length());
+		FileSaver saver_=new FileSaver(this,Environment.getExternalStorageDirectory().toString()+"/MCPEDumper/vtables/",fileName+".txt",strings_);
+		saver_.save();
+		
+		new SnackBar(this,"Done").show();
 	}
 	
 	private List<Map<String, Object>> getData() 
