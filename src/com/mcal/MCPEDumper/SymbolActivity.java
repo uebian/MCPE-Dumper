@@ -16,7 +16,7 @@ public class SymbolActivity extends Activity
 	private String name;
 	private int type;
 	private String demangledName;
-	
+
 	@Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -59,8 +59,8 @@ public class SymbolActivity extends Activity
 		String className=new String();
 		if (symbolMainName.lastIndexOf("::") != -1)
 			className = symbolMainName.substring(0, symbolMainName.lastIndexOf("::"));
-		else if(symbolMainName.startsWith("vtable"))
-			className=symbolMainName.substring(symbolMainName.lastIndexOf(" ")+1,symbolMainName.length());
+		else if (symbolMainName.startsWith("vtable"))
+			className = symbolMainName.substring(symbolMainName.lastIndexOf(" ") + 1, symbolMainName.length());
 		else
 			className = "NULL";
 		TextView textClassName=(TextView)findViewById(R.id.symbolactivityTextClass);
@@ -76,23 +76,23 @@ public class SymbolActivity extends Activity
 		textSymbolName.setText(symbolName);
 
 		String typeName=Tables.symbol_type.get(type);
-		
+
 		TextView textTypeName=(TextView)findViewById(R.id.symbolactivityTextViewType);
 		textTypeName.setText(typeName);
-	
-		if(name.startsWith("_ZTV"))
+
+		if (name.startsWith("_ZTV"))
 		{
 			findViewById(R.id.symbolactivityButtonFloat).setVisibility(View.VISIBLE);
 			findViewById(R.id.symbolactivityTextViewButtonFloat).setVisibility(View.VISIBLE);
 		}
-		
-		if(className!="NULL")
+
+		if (className != "NULL")
 		{
 			findViewById(R.id.symbolactivityButtonFloatClass).setVisibility(View.VISIBLE);
 			findViewById(R.id.symbolactivityTextViewButtonFloatClass).setVisibility(View.VISIBLE);
 		}
 	}
-	
+
 	public void toVtableActivity(View view)
 	{
 		showProgressDialog();
@@ -100,41 +100,41 @@ public class SymbolActivity extends Activity
 		{
 			public void run()
 			{
-				MCPEVtable vtable=VtableDumper.dump(SymbolActivity.this.path,SymbolActivity.this.name);
-				if(vtable!=null)
+				MCPEVtable vtable=VtableDumper.dump(SymbolActivity.this.path, SymbolActivity.this.name);
+				if (vtable != null)
 					SymbolActivity.this.toVtableActivity_(vtable);
 				dismissProgressDialog();
 			}
 		}.start();
 	}
-	
+
 	public void toClassActivity(View view)
 	{
-		
+
 	}
-	
+
 	public void toVtableActivity_(MCPEVtable vtable)
 	{
 		Bundle bundle=new Bundle();
-		bundle.putString("name",name);
-		bundle.putString("path",path);
+		bundle.putString("name", name);
+		bundle.putString("path", path);
 		Dumper.exploed.addElement(vtable);
-		Intent intent=new Intent(this,VtableActivity.class);
+		Intent intent=new Intent(this, VtableActivity.class);
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}
-	
+
 	com.gc.materialdesign.widgets.ProgressDialog dialog;
 
 	public void showProgressDialog()
 	{
-		dialog=new com.gc.materialdesign.widgets.ProgressDialog(this,"loading...");
+		dialog = new com.gc.materialdesign.widgets.ProgressDialog(this, "loading...");
 		dialog.show();
 	}
 	public void dismissProgressDialog()
 	{
-		if(dialog!=null)
+		if (dialog != null)
 			dialog.dismiss();
-		dialog=null;
+		dialog = null;
 	}
 }
