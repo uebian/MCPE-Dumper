@@ -45,31 +45,40 @@ public class MenuActivity extends Activity
 		FileSaver saver_=new FileSaver(this,Environment.getExternalStorageDirectory().toString()+"/MCPEDumper/symbols/","Symbols_demangled.txt",strings_);
 		saver_.save();
 		
-		new SnackBar(this,"Done").show();
+		
 	}
 	
 	private com.gc.materialdesign.widgets.ProgressDialog mDialog;
-	
+	private SnackBar mBar;
+	private Handler mHandler=new Handler()
+	{
+
+		@Override
+		public void handleMessage(Message msg)
+		{
+			super.handleMessage(msg);
+			if(mDialog!=null)
+				mDialog.dismiss();
+			mDialog=null;
+			if(mBar!=null)
+				mBar.show();
+			else
+				new SnackBar(MenuActivity.this,"Done").show();
+		}
+	};
 	public void saveSymbols(View view)
 	{
 		mDialog=new com.gc.materialdesign.widgets.ProgressDialog(this,"Saving...");
 		mDialog.show();
-		
+		mBar=new SnackBar(this,"Done");
 		new Thread()
 		{
 			public void run()
 			{
 				_saveSymbols();
-				dismissDialog();
+				Message msg=new Message();
+				mHandler.sendMessage(msg);
 			}
 		}.start();
-	}
-	
-	public void dismissDialog()
-	{
-		if(mDialog==null||!mDialog.isShowing())
-			return;
-		mDialog.dismiss();
-		mDialog=null;
 	}
 }
