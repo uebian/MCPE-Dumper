@@ -1,32 +1,49 @@
 package com.mcal.MCPEDumper.nativeapi;
 import java.util.*;
+import java.util.regex.*;
 
 public class Searcher
 {
 	public static Vector<MCPESymbol> search(String key)
 	{
 		Vector<MCPESymbol> returnValue=new Vector<MCPESymbol>();
-		if(key==null||key.isEmpty()||key==""||key==" ")
+		if (key == null || key.isEmpty() || key == "" || key == " ")
 			return returnValue;
+
+		for (MCPESymbol symbol:Dumper.symbols)
+		{
+			if (symbol.getDemangledName() != null && symbol.getDemangledName().indexOf(key) != -1)
+			{
+				returnValue.addElement(symbol);
+			}
+		}
+
+		return returnValue;
+	}
+
+	public static Vector<MCPESymbol> searchWithPattern(String role)
+	{
+		Vector<MCPESymbol> returnValue=new Vector<MCPESymbol>();
 		try
 		{
+			if (role == null || role.isEmpty() || role == "" || role == " ")
+				return returnValue;
+			Pattern p = Pattern.compile(role);
+
 			for (MCPESymbol symbol:Dumper.symbols)
 			{
-				if (symbol.getDemangledName()!=null&&symbol.getDemangledName().indexOf(key) != -1)
+				if (symbol.getDemangledName() != null)
 				{
-					returnValue.addElement(symbol);
+					Matcher m = p.matcher(symbol.getDemangledName());
+					if (m.find())
+						returnValue.addElement(symbol);
 				}
 			}
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
-			e.printStackTrace();
+			return returnValue;
 		}
 		return returnValue;
-	}
-	
-	public static Vector<MCPESymbol> searchClass(String key,boolean allChar,boolean size)
-	{
-		return null;
 	}
 }

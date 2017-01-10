@@ -50,9 +50,9 @@
 		<ImageView
 			android:layout_width="65dp"
 			android:layout_height="65dp"
-			android:id="@+id/imageViewFloatingMenu"
 			android:src="@drawable/box_pink"
 			android:paddingLeft="5dp"
+			android:id="@+id/imageViewFloatingMenu"
 			android:paddingTop="5dp"/>
 
 		<TextView
@@ -62,6 +62,42 @@
 			android:text="Floating Menu"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_toRightOf="@id/imageViewFloatingMenu"/>
+
+	</com.gc.materialdesign.views.LayoutRipple>
+	
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Others"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:layout_marginLeft="10dp"/>
+
+	<View
+		android:layout_height="1dp"
+		android:layout_width="match_parent"
+		android:background="#0096FF"
+		android:layout_marginLeft="10dp"/>
+	
+	<com.gc.materialdesign.views.LayoutRipple
+		android:layout_width="match_parent"
+		android:onClick="saveSymbols"
+		android:layout_height="75dp">
+
+		<ImageView
+			android:layout_width="65dp"
+			android:layout_height="65dp"
+			android:src="@drawable/ic_system_update_tv_black"
+			android:id="@+id/imageViewOutPut"
+			android:paddingLeft="5dp"
+			android:paddingTop="5dp"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:text="Save All Symbols"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_toRightOf="@id/imageViewOutPut"/>
 
 	</com.gc.materialdesign.views.LayoutRipple>
 

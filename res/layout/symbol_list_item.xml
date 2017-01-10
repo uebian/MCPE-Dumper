@@ -17,7 +17,7 @@
 			android:orientation="horizontal">
 
 			<ImageView
-				android:id="@+id/img"
+				android:id="@+id/symbolslistitemimg"
 				android:layout_width="30dp"
 				android:layout_height="30dp"
 				android:layout_centerInParent="true"
@@ -35,13 +35,13 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textSize="20sp"
-				android:id="@+id/symbolsactivitylistitemTextViewtop"/>
+				android:id="@+id/symbolslistitemTextViewtop"/>
 
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textSize="15sp"
-				android:id="@+id/symbolsactivitylistitemTextViewbottom"/>
+				android:id="@+id/symbolslistitemTextViewbottom"/>
 
 		</LinearLayout>
 

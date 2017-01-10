@@ -55,6 +55,9 @@ public class SymbolsActivity extends Activity
 	public void showSearch(View view)
 	{
 		Intent i=new Intent(this,SearchActivity.class);
+		Bundle bundle=new Bundle();
+		bundle.putString("filePath",path);
+		i.putExtras(bundle);
 		startActivity(i);
 	}
 	
@@ -126,9 +129,9 @@ public class SymbolsActivity extends Activity
 			{ 
 				holder = new ViewHolder(); 
 				convertView = mInflater.inflate(R.layout.symbol_list_item, null); 
-				holder.img = (ImageView)convertView.findViewById(R.id.img); 
-				holder.title = (TextView)convertView.findViewById(R.id.symbolsactivitylistitemTextViewtop); 
-				holder.info = (TextView)convertView.findViewById(R.id.symbolsactivitylistitemTextViewbottom); 
+				holder.img = (ImageView)convertView.findViewById(R.id.symbolslistitemimg); 
+				holder.title = (TextView)convertView.findViewById(R.id.symbolslistitemTextViewtop); 
+				holder.info = (TextView)convertView.findViewById(R.id.symbolslistitemTextViewbottom); 
 				convertView.setTag(holder);
 			}
 			else 
