@@ -14,7 +14,7 @@
 
 		<TextView
 			android:layout_height="wrap_content"
-			android:text="Search:"
+			android:text="@string/search"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_width="wrap_content"/>
 
@@ -29,7 +29,7 @@
 		<CheckBox
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Use Pattern"
+			android:text="@string/usePattern"
 			android:id="@+id/searchactivityCheckBoxUsePattern"/>
 
 		<ListView
@@ -59,7 +59,7 @@
 		android:layout_marginRight="90dp"
 		android:layout_marginBottom="50dp"
 		android:background="#CCCCCC"
-		android:text="Search"/>
+		android:text="@string/search"/>
 
 </RelativeLayout>
 

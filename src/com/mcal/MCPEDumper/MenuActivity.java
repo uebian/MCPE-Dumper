@@ -63,14 +63,14 @@ public class MenuActivity extends Activity
 			if(mBar!=null)
 				mBar.show();
 			else
-				new SnackBar(MenuActivity.this,"Done").show();
+				new SnackBar(MenuActivity.this,MenuActivity.this.getString(R.string.done)).show();
 		}
 	};
 	public void saveSymbols(View view)
 	{
-		mDialog=new com.gc.materialdesign.widgets.ProgressDialog(this,"Saving...");
+		mDialog=new com.gc.materialdesign.widgets.ProgressDialog(this,getString(R.string.saving));
 		mDialog.show();
-		mBar=new SnackBar(this,"Done");
+		mBar=new SnackBar(this,getString(R.string.done));
 		new Thread()
 		{
 			public void run()

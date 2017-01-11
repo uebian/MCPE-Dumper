@@ -30,7 +30,7 @@ public class MainActivity extends Activity
 		Intent intent = MainActivity.this.getPackageManager().getLaunchIntentForPackage("com.mojang.minecraftpe");
 		if(intent==null)
 		{
-			com.gc.materialdesign.widgets.Dialog dialog=new com.gc.materialdesign.widgets.Dialog(this,"Error","No MCPE Found");
+			com.gc.materialdesign.widgets.Dialog dialog=new com.gc.materialdesign.widgets.Dialog(this,getString(R.string.error),getString(R.string.noMCPE));
 			dialog.show();
 			return;
 		}
@@ -56,11 +56,11 @@ public class MainActivity extends Activity
 		intent.addCategory(Intent.CATEGORY_OPENABLE);
 		try
 		{
-			startActivityForResult( Intent.createChooser(intent, "Select libminecraftpe.so to dump."), FILE_SELECT_CODE);
+			startActivityForResult( Intent.createChooser(intent, getString(R.string.pickSo)), FILE_SELECT_CODE);
 		} 
 		catch(android.content.ActivityNotFoundException ex)
 		{
-			new SnackBar(this, "Please install a file manager.").show();
+			new SnackBar(this, getString(R.string.noFile)).show();
 		}
 	}
 	@Override
@@ -100,7 +100,7 @@ public class MainActivity extends Activity
 	
 	public void showProgressDialog()
 	{
-		dialog=new ProgressDialog(MainActivity.this,"loading...");
+		dialog=new ProgressDialog(MainActivity.this,getString(R.string.loading));
 		dialog.show();
 	}
 	public void dismissProgressDialog()

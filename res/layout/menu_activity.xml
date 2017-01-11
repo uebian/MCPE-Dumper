@@ -7,7 +7,7 @@
 
 	<TextView
 		android:layout_height="wrap_content"
-		android:text="Tools"
+		android:text="@string/tools"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="wrap_content"
 		android:layout_marginLeft="10dp"/>
@@ -35,7 +35,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerVertical="true"
-			android:text="Name Demangler"
+			android:text="@string/nameDemangler"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_toRightOf="@id/imageViewNameDemangler"/>
 
@@ -59,7 +59,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerVertical="true"
-			android:text="Floating Menu"
+			android:text="@string/floatingMenu"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_toRightOf="@id/imageViewFloatingMenu"/>
 
@@ -67,7 +67,7 @@
 	
 	<TextView
 		android:layout_height="wrap_content"
-		android:text="Others"
+		android:text="@string/others"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="wrap_content"
 		android:layout_marginLeft="10dp"/>
@@ -95,7 +95,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerVertical="true"
-			android:text="Save All Symbols"
+			android:text="@string/saveSymbols"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_toRightOf="@id/imageViewOutPut"/>
 

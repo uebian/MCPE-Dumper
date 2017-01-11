@@ -19,25 +19,25 @@
             </intent-filter>
         </activity>
 		<activity android:name="com.mcal.MCPEDumper.SymbolsActivity"
-			android:label="Symbols">
+			android:label="@string/symbolsActivity">
 		</activity>
 		<activity android:name="com.mcal.MCPEDumper.ClassActivity"
-			android:label="Class">
+			android:label="@string/classActivity">
 		</activity>
 		<activity android:name="com.mcal.MCPEDumper.SymbolActivity"
-			android:label="Symbol">
+			android:label="@string/symbolActivity">
 		</activity>
 		<activity android:name="com.mcal.MCPEDumper.MenuActivity"
-			android:label="Menu">
+			android:label="@string/menuActivity">
 		</activity>
 		<activity android:name="com.mcal.MCPEDumper.SearchActivity"
-			android:label="Search Symbols">
+			android:label="@string/searchActivity">
 		</activity>
 		<activity android:name="com.mcal.MCPEDumper.VtableActivity"
-			android:label="Vtable'">
+			android:label="@string/vtableActivity">
 		</activity>
 		<activity android:name="com.mcal.MCPEDumper.NameDemanglerActivity"
-			android:label="Name Demangler">
+			android:label="@string/nameDemangler">
 		</activity>
     </application>
 </manifest> 

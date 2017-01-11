@@ -57,7 +57,7 @@ public class VtableActivity extends Activity
 		FileSaver saver_=new FileSaver(this,Environment.getExternalStorageDirectory().toString()+"/MCPEDumper/vtables/",fileName+".txt",strings_);
 		saver_.save();
 		
-		new SnackBar(this,"Done").show();
+		new SnackBar(this,getString(R.string.done)).show();
 	}
 	
 	private List<Map<String, Object>> getData() 

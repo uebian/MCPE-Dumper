@@ -42,7 +42,7 @@
 		android:layout_marginRight="90dp"
 		android:layout_marginBottom="120dp"
 		android:background="#CCCCCC"
-		android:text="Menu"/>
+		android:text="@string/menu"/>
 
 	<TextView
 		android:layout_width="wrap_content"
@@ -52,6 +52,6 @@
 		android:layout_marginRight="90dp"
 		android:layout_marginBottom="50dp"
 		android:background="#CCCCCC"
-		android:text="Search"/>
+		android:text="@string/search"/>
 	
 </RelativeLayout>

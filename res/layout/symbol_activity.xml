@@ -71,7 +71,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Type:"
+					android:text="@string/typeName"
 					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:textColor="#06FA00"/>
 
@@ -90,7 +90,7 @@
 
 				<TextView
 					android:layout_width="wrap_content"
-					android:text="Class:"
+					android:text="@string/className"
 					android:textColor="#06FA00"
 					android:layout_height="wrap_content"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
@@ -111,7 +111,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:textColor="#06FA00"
-					android:text="Name:"
+					android:text="@string/mainName"
 					android:layout_height="wrap_content"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
@@ -131,7 +131,7 @@
 				<TextView
 					android:layout_width="wrap_content"
 					android:textColor="#06FA00"
-					android:text="Arguments:"
+					android:text="@string/argumentsName"
 					android:layout_height="wrap_content"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
@@ -148,32 +148,6 @@
 				android:layout_width="match_parent"
 				android:background="#44A1FF"/>
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical"
-				android:id="@+id/symbolactivityLinearLayoutVtable"
-				android:visibility="gone">
-
-				<TextView
-					android:layout_height="wrap_content"
-					android:text="VTables:"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:layout_width="wrap_content"/>
-
-				<TextView
-					android:id="@+id/symbolactivityVtableText"
-					android:layout_height="wrap_content"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:layout_width="match_parent"/>
-
-				<View
-					android:layout_height="1dp"
-					android:layout_width="match_parent"
-					android:background="#44A1FF"/>
-
-			</LinearLayout>
-
 		</LinearLayout>
 
 	</ScrollView>
@@ -188,7 +162,7 @@
 		android:background="#CCCCCC"
 		android:visibility="gone"
 		android:id="@+id/symbolactivityTextViewButtonFloat"
-		android:text="Owned vtables"/>
+		android:text="@string/ownedVtable"/>
 
 	<com.gc.materialdesign.views.ButtonFloat
 		android:layout_width="wrap_content"
@@ -213,7 +187,7 @@
 		android:background="#CCCCCC"
 		android:visibility="gone"
 		android:id="@+id/symbolactivityTextViewButtonFloatClass"
-		android:text="Target Class"/>
+		android:text="@string/targetClass"/>
 
 	<com.gc.materialdesign.views.ButtonFloat
 		android:layout_width="wrap_content"

@@ -154,7 +154,7 @@ public class SymbolsActivity extends Activity
 	@Override
 	public void onBackPressed()
 	{
-		bar=new SnackBar(this,"Press again to exit");
+		bar=new SnackBar(this,getString(R.string.againToExit));
 		bar.show();
 		bar.setDismissTimer(2500);
 		bar.setOnBackPressedListener(new SnackBar.OnBackPressedListener()

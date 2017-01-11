@@ -287,7 +287,44 @@ containing a value of this type.
         public static final int vtable_activity=0x7f03000f;
     }
     public static final class string {
+        public static final int about=0x7f06001b;
+        public static final int againToExit=0x7f06001c;
         public static final int app_name=0x7f060000;
+        public static final int argumentsName=0x7f060010;
+        public static final int classActivity=0x7f060022;
+        public static final int className=0x7f060011;
+        public static final int demangle=0x7f06001d;
+        public static final int demanglerActivity=0x7f060024;
+        public static final int done=0x7f060001;
+        public static final int error=0x7f060008;
+        public static final int floatingMenu=0x7f060015;
+        public static final int loading=0x7f060004;
+        public static final int mainName=0x7f060013;
+        public static final int menu=0x7f060003;
+        public static final int menuActivity=0x7f06001f;
+        public static final int nameDemangler=0x7f060014;
+        public static final int noFile=0x7f06000a;
+        public static final int noMCPE=0x7f06000b;
+        public static final int objects=0x7f06000d;
+        public static final int others=0x7f060017;
+        public static final int ownedVtable=0x7f06000e;
+        public static final int pickFromInstalled=0x7f060007;
+        public static final int pickFromSdcard=0x7f060006;
+        public static final int pickSo=0x7f060009;
+        public static final int save=0x7f060018;
+        public static final int saveSymbols=0x7f060019;
+        public static final int savedIn=0x7f060025;
+        public static final int saving=0x7f060005;
+        public static final int search=0x7f060002;
+        public static final int searchActivity=0x7f060020;
+        public static final int symbolActivity=0x7f060021;
+        public static final int symbols=0x7f06000c;
+        public static final int symbolsActivity=0x7f06001e;
+        public static final int targetClass=0x7f06000f;
+        public static final int tools=0x7f060016;
+        public static final int typeName=0x7f060012;
+        public static final int usePattern=0x7f06001a;
+        public static final int vtableActivity=0x7f060023;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;

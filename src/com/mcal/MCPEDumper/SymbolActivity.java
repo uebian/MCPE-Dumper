@@ -128,7 +128,7 @@ public class SymbolActivity extends Activity
 
 	public void showProgressDialog()
 	{
-		dialog = new com.gc.materialdesign.widgets.ProgressDialog(this, "loading...");
+		dialog = new com.gc.materialdesign.widgets.ProgressDialog(this, getString(R.string.loading));
 		dialog.show();
 	}
 	public void dismissProgressDialog()
