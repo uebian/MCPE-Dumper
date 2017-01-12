@@ -25,7 +25,7 @@ public class SymbolsActivity extends Activity
 		
         list = (ListView)findViewById(R.id.symbols_activity_list_view); 
 		data = getData();
-		ClassesAdapter adapter = new ClassesAdapter(this);
+		SymbolsAdapter adapter = new SymbolsAdapter(this);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new ItemClickListener());
 		
@@ -94,10 +94,10 @@ public class SymbolsActivity extends Activity
 		}
 	}
 
-    public class ClassesAdapter extends BaseAdapter 
+    public class SymbolsAdapter extends BaseAdapter 
     {     
 		private LayoutInflater mInflater = null;
-		private ClassesAdapter(Context context) 
+		private SymbolsAdapter(Context context) 
 		{ 
 			this.mInflater = LayoutInflater.from(context); 
 		} 

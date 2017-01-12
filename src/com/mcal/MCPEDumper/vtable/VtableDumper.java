@@ -70,7 +70,9 @@ public class VtableDumper
 				if(getSymbol(map.get(sym.value + 8 + j * 4).name)!=null)
 					virtual_table_symbols.addElement(getSymbol(map.get(sym.value + 8 + j * 4).name));
 		}
-		return new MCPEVtable(classn,virtual_table_symbols);
+		MCPEVtable vtable__=new MCPEVtable(classn,virtual_table_symbols);
+		Dumper.exploed.addElement(vtable__);
+		return vtable__;
 	}
 	
 	static public MCPESymbol getSymbol(String name)

@@ -16,7 +16,7 @@ public class SymbolActivity extends Activity
 	private String name;
 	private int type;
 	private String demangledName;
-
+	private String className;
 	@Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -56,7 +56,7 @@ public class SymbolActivity extends Activity
 			symbolMainName = demangledName.substring(0, demangledName.indexOf("("));
 		else
 			symbolMainName = demangledName;
-		String className=new String();
+		className=new String();
 		if (symbolMainName.lastIndexOf("::") != -1)
 			className = symbolMainName.substring(0, symbolMainName.lastIndexOf("::"));
 		else if (symbolMainName.startsWith("vtable"))
@@ -110,7 +110,14 @@ public class SymbolActivity extends Activity
 
 	public void toClassActivity(View view)
 	{
-
+		if(className=="NULL")
+			return;
+		Bundle bundle=new Bundle();
+		bundle.putString("name", className);
+		bundle.putString("path", path);
+		Intent intent=new Intent(this, ClassActivity.class);
+		intent.putExtras(bundle);
+		startActivity(intent);
 	}
 
 	public void toVtableActivity_(MCPEVtable vtable)

@@ -11,10 +11,22 @@ public class MCPEClass
 		this.name = name;
 		this.symbols = symbols;
 	}
+	
+	public MCPEClass(String name)
+	{
+		this.name = name;
+		this.symbols = new Vector<MCPESymbol>();
+	}
+	
 
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+	
+	public void addNewSymbol(MCPESymbol sym)
+	{
+		symbols.addElement(sym);
 	}
 
 	public String getName()

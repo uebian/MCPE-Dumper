@@ -36,16 +36,51 @@ public class SearchActivity extends Activity
 		search(key,usePattern);
 	}
 	
-	private void search(String key,boolean usePattern)
+	private void search(final String key,final boolean usePattern)
 	{
-		data=search_datas(key,usePattern);
-		ResultAdapter adapter = new ResultAdapter(this);
-		list.setAdapter(adapter);
-		list.setOnItemClickListener(new ItemClickListener());
+		new Thread()
+		{
+			public void run()
+			{
+				SearchActivity.this.mHandler.sendEmptyMessage(1);
+				data=search_datas(key,usePattern);
+				SearchActivity.this.mHandler.sendEmptyMessage(0);
+				SearchActivity.this.mHandler.sendEmptyMessage(2);
+			}
+		}.start();
 	}
+	com.gc.materialdesign.widgets.ProgressDialog mProgressDialog;
+	Handler mHandler=new Handler()
+	{
+		@Override
+		public void handleMessage(Message msg)
+		{
+			super.handleMessage(msg);
+			
+			switch(msg.what)
+			{
+			case 0:
+				ResultAdapter adapter = new ResultAdapter(SearchActivity.this);
+				list.setAdapter(adapter);
+				list.setOnItemClickListener(new ItemClickListener());
+				break;
+			case 1:
+				SearchActivity.this.mProgressDialog=new com.gc.materialdesign.widgets.ProgressDialog(SearchActivity.this,SearchActivity.this.getString(R.string.loading));
+				SearchActivity.this.mProgressDialog.show();
+				break;
+			case 2:
+				if(SearchActivity.this.mProgressDialog==null)
+					break;
+				SearchActivity.this.mProgressDialog.dismiss();
+				break;
+			}
+			
+		}
+		
+	};
 	
 	private List<Map<String, Object>> search_datas(String key,boolean usePattern) 
-    { 
+    {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(); 
         Map<String, Object> map;
 		Vector<MCPESymbol> searchResult=null;

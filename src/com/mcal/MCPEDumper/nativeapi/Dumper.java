@@ -18,40 +18,8 @@ public class Dumper
 			String demangledName=MCPEDumper.getDemangledNameAt(i);
 			if (demangledName == null || demangledName.isEmpty() || demangledName == "" || demangledName == " ")
 				demangledName = MCPEDumper.getNameAt(i);
-			symbols.addElement(new MCPESymbol(MCPEDumper.getNameAt(i), demangledName, MCPEDumper.getTypeAt(i), MCPEDumper.getBindAt(i)));
+			MCPESymbol newSymbol=new MCPESymbol(MCPEDumper.getNameAt(i), demangledName, MCPEDumper.getTypeAt(i), MCPEDumper.getBindAt(i));
+			symbols.addElement(newSymbol);
 		}
-
-
-	}
-
-	public static boolean hasClass(String name)
-	{
-		String symbolMainName=new String();
-		if (name.indexOf("(") != -1)
-			symbolMainName = name.substring(0, name.indexOf("("));
-		else
-			symbolMainName = name;
-
-		if (symbolMainName.lastIndexOf("::") != -1)
-			return true;
-		else if (symbolMainName.startsWith("vtable"))
-			return true;
-		return false;
-	}
-
-	public static String getClassName(String demangledName)
-	{
-		String symbolMainName=new String();
-		if (demangledName.indexOf("(") != -1)
-			symbolMainName = demangledName.substring(0, demangledName.indexOf("("));
-		else
-			symbolMainName = demangledName;
-
-		if (symbolMainName.lastIndexOf("::") != -1)
-			return symbolMainName.substring(0, symbolMainName.lastIndexOf("::"));
-		else if (symbolMainName.startsWith("vtable"))
-			return symbolMainName.substring(symbolMainName.lastIndexOf(" ") + 1, symbolMainName.length());
-		else
-			return "NULL";
 	}
 }

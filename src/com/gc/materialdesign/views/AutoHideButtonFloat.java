@@ -53,20 +53,26 @@ public class AutoHideButtonFloat extends ButtonFloat implements AbsListView.OnSc
     }
 
     @Override
-    public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+    public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount)
+	{
 
-        if (mLastFirstVisibleItem < firstVisibleItem) {
+        if (mLastFirstVisibleItem < firstVisibleItem)
+		{
             if (floatShowing) floatShowing = false;
-            if (!floatHiding) {
+            if (!floatHiding)
+			{
                 ViewPropertyAnimator.animate(view).translationY(500).setDuration(300);
                 floatHiding = true;
             }
         }
-        if (mLastFirstVisibleItem > firstVisibleItem) {
-            if (floatHiding) {
+        if (mLastFirstVisibleItem > firstVisibleItem)
+		{
+            if (floatHiding)
+			{
                 floatHiding = false;
             }
-            if (!floatShowing) {
+            if (!floatShowing)
+			{
                 ViewPropertyAnimator.animate(view).translationY(0).setDuration(300);
                 floatShowing = true;
             }
