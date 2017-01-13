@@ -236,7 +236,7 @@ public class HeaderGenerator
 		if (vtable.getVtables().isEmpty())
 			return null;
 		Vector<MCPESymbol>symbols=vtable.getVtables();
-		for (MCPESymbol symbol:mcpeClass.getSymbols())
+		for (MCPESymbol symbol:symbols)
 			if (!hasItemInList(symbols, symbol))
 				symbols.addElement(symbol);
 		symbols = moveConOrDesToStart(symbols);
