@@ -23,8 +23,20 @@
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_width="wrap_content"/>
 
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Copyright © 2016-2017 MCAL Team"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="wrap_content"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="wrap_content"
+			android:id="@+id/mainactivityTextViewSavePath"/>
+
 	</LinearLayout>
-	
+
 	<com.gc.materialdesign.views.ButtonFloat
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

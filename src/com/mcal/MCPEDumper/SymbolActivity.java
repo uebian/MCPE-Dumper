@@ -107,10 +107,25 @@ public class SymbolActivity extends Activity
 			}
 		}.start();
 	}
-
+	
 	public void toClassActivity(View view)
 	{
-		if(className=="NULL")
+		showProgressDialog();
+		new Thread()
+		{
+			public void run()
+			{
+				MCPEVtable vtable=VtableDumper.dump(SymbolActivity.this.path, SymbolActivity.this.name);
+				if (vtable != null)
+					SymbolActivity.this.toClassActivity_(vtable);
+				dismissProgressDialog();
+			}
+		}.start();
+	}
+
+	public void toClassActivity_(MCPEVtable vtable)
+	{
+		if(className==null||className==""||className==" "||className.isEmpty()||className=="NULL")
 			return;
 		Bundle bundle=new Bundle();
 		bundle.putString("name", className);

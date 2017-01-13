@@ -9,6 +9,10 @@ public class VtableDumper
 {
 	public static MCPEVtable dump(String path,String classn)
 	{
+		for(MCPEVtable ztv:Dumper.exploed)
+			if(ztv.getName().equals(classn))
+				return ztv;
+		
 		Dump d=new Dump(path);
 
 		symbol sym=null;

@@ -15,13 +15,16 @@ public class FloatingMenuView extends RelativeLayout
 	private TextView text;
 	private String path;
 	
-	FloatingMenuView(Context c,FloatingMenu menu,String filePath)
+	FloatingMenuView(Context c,FloatingMenu menu,String filePath,int width,int height)
 	{
 		super(c);
 		this.menu=menu;
 		this.context=c;
 		this.path=filePath;
 		View view = LayoutInflater.from(c).inflate(R.layout.floating_menu, null); 
+		
+		int buttonWidth=width/6;
+		
 		ButtonFlat imageButtonClose=(ButtonFlat)view.findViewById(R.id.floatingmenuButtonClose);
 		imageButtonClose.setOnClickListener(new View.OnClickListener()
 			{
@@ -34,6 +37,7 @@ public class FloatingMenuView extends RelativeLayout
 				}
 
 		});
+		setLayoutParams(imageButtonClose,buttonWidth);
 		ButtonFlat imageButtonHide=(ButtonFlat)view.findViewById(R.id.floatingmenuButtonHide);
 		imageButtonHide.setOnClickListener(new View.OnClickListener()
 			{
@@ -45,8 +49,9 @@ public class FloatingMenuView extends RelativeLayout
 				}
 
 			});
+		setLayoutParams(imageButtonHide,buttonWidth);
 		editText=(EditText)view.findViewById(R.id.floatingmenuEditText);
-		
+		buttonWidth *= 0.75;
 		ButtonFlat imageButtonClear=(ButtonFlat)view.findViewById(R.id.floatingmenuButtonClear);
 		imageButtonClear.setOnClickListener(new View.OnClickListener()
 			{
@@ -58,21 +63,7 @@ public class FloatingMenuView extends RelativeLayout
 				}
 
 			});
-		ButtonFlat imageButtonOpen=(ButtonFlat)view.findViewById(R.id.floatingmenuButtonOpen);
-		imageButtonOpen.setOnClickListener(new View.OnClickListener()
-			{
-
-				@Override
-				public void onClick(View p1)
-				{
-					Intent intent=new Intent(context,SymbolsActivity.class);
-					Bundle bundle=new Bundle();
-					bundle.putString("filePath",path);
-					intent.putExtras(bundle);
-					context.startActivity(intent);
-				}
-
-			});
+		setLayoutParams(imageButtonClear,buttonWidth);
 		ButtonFlat imageButtonSearch=(ButtonFlat)view.findViewById(R.id.floatingmenuButtonSearch);
 		imageButtonSearch.setOnClickListener(new View.OnClickListener()
 			{
@@ -85,6 +76,7 @@ public class FloatingMenuView extends RelativeLayout
 
 			});
 		text=(TextView)view.findViewById(R.id.floatingmenuTextView);
+		setLayoutParams(imageButtonSearch,buttonWidth);
 		this.addView(view);
 	}
 	
@@ -103,5 +95,12 @@ public class FloatingMenuView extends RelativeLayout
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	private void setLayoutParams(View view,int w)
+	{
+		ViewGroup.LayoutParams params=view.getLayoutParams();
+		params.width=w;
+		view.setLayoutParams(params);
 	}
 }

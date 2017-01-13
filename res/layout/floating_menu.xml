@@ -39,17 +39,9 @@
 				android:layout_height="30dp"
 				android:layout_width="50dp"
 				android:layout_gravity="right"
-				android:text="□"
-				android:id="@+id/floatingmenuButtonOpen"
-				android:layout_toLeftOf="@id/floatingmenuButtonHide"/>
-
-			<com.gc.materialdesign.views.ButtonFlat
-				android:layout_height="30dp"
-				android:layout_width="50dp"
-				android:layout_gravity="right"
 				android:text="–"
 				android:id="@+id/floatingmenuButtonClose"
-				android:layout_toLeftOf="@id/floatingmenuButtonOpen"/>
+				android:layout_toLeftOf="@id/floatingmenuButtonHide"/>
 
 		</RelativeLayout>
 

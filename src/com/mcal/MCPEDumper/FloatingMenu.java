@@ -25,9 +25,6 @@ public class FloatingMenu
 
 	public void show()
 	{  
-		floatView = new FloatingMenuView(context,this,path);
-		floatView.setClickable(true);
-
 		wm = (WindowManager) context.getApplicationContext()  .getSystemService(Context.WINDOW_SERVICE);  
 		params = new WindowManager.LayoutParams();  
 
@@ -43,7 +40,9 @@ public class FloatingMenu
 		params.x = xPos;
 		params.y = yPos;
 
-
+		floatView = new FloatingMenuView(context,this,path,params.width,params.height);
+		floatView.setClickable(true);
+		
 		floatView.setOnTouchListener(new OnTouchListener() {  
 				int lastX, lastY;  
 				int paramX, paramY;  

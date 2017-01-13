@@ -19,7 +19,7 @@ public class ClassActivity extends Activity
 	private String name;
 	private ListView list; 
     private List<Map<String, Object>> data; 
-	
+
 	@Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -28,37 +28,37 @@ public class ClassActivity extends Activity
 		setContentView(R.layout.class_activity);
 		name = getIntent().getExtras().getString("name");
 		path = getIntent().getExtras().getString("path");
-		
+
 		list = (ListView)findViewById(R.id.class_activity_list_view); 
 		data = getData();
 		SymbolsAdapter adapter = new SymbolsAdapter(this);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(new ItemClickListener());
-		
+
 		setTitle(name);
 		TextView title=(TextView)findViewById(R.id.classactivityTextViewName);
 		title.setText(name);
-		
-		if(hasVtable())
+
+		if (hasVtable())
 		{
 			((TextView)findViewById(R.id.classactivityTextViewButtonFloatVtable)).setVisibility(View.VISIBLE);
 			((ButtonFloat)findViewById(R.id.classactivityButtonFloat)).setVisibility(View.VISIBLE);
 		}
 	}
-	
+
 	private List<Map<String, Object>> getData() 
     { 
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(); 
         Map<String, Object> map;
 		MCPEClass classThis=findClass();
-		if(classThis==null)
+		if (classThis == null)
 			return list;
         for (int i=0;i < classThis.getSymbols().size();++i)
         { 
             map = new HashMap<String, Object>(); 
-			if(classThis.getSymbols().get(i).getType()==1)
+			if (classThis.getSymbols().get(i).getType() == 1)
 				map.put("img", R.drawable.box_blue); 
-			else if(classThis.getSymbols().get(i).getType()==2)
+			else if (classThis.getSymbols().get(i).getType() == 2)
 				map.put("img", R.drawable.box_red);
 			else map.put("img", R.drawable.box_pink);
 			map.put("title", classThis.getSymbols().get(i).getDemangledName());
@@ -68,26 +68,26 @@ public class ClassActivity extends Activity
         } 
         return list; 
     }
-	
+
 	Handler mHandler=new Handler()
 	{
 		@Override
 		public void handleMessage(Message msg)
 		{
 			super.handleMessage(msg);
-			switch(msg.what)
+			switch (msg.what)
 			{
-			case 0:
-				showSavingProgressDialog();
-				break;
-			case 1:
-				new SnackBar(ClassActivity.this,ClassActivity.this.getString(R.string.done)).show();
-				dismissProgressDialog();
-				break;
+				case 0:
+					showSavingProgressDialog();
+					break;
+				case 1:
+					new SnackBar(ClassActivity.this, ClassActivity.this.getString(R.string.done)).show();
+					dismissProgressDialog();
+					break;
 			}
 		}
 	};
-	
+
 	public void save(View view)
 	{
 		new Thread()
@@ -95,30 +95,57 @@ public class ClassActivity extends Activity
 			public void run()
 			{
 				mHandler.sendEmptyMessage(0);
-				HeaderGenerator generator=new HeaderGenerator(findClass(),findVtable());
-				FileSaver saver=new FileSaver(ClassActivity.this,Environment.getExternalStorageDirectory().toString()+"/MCPEDumper/headers/",name+".h",generator.generate());
+				HeaderGenerator generator=new HeaderGenerator(findClass(), findVtable(), path);
+				FileSaver saver=new FileSaver(ClassActivity.this, Environment.getExternalStorageDirectory().toString() + "/MCPEDumper/headers/", getSaveName(name), generator.generate());
 				saver.save();
 				mHandler.sendEmptyMessage(1);
 			}
 		}.start();
 	}
-	
+
 	private MCPEClass findClass()
 	{
-		for(MCPEClass clasz:Dumper.classes)
-			if(clasz.getName().equals(name))
+		for (MCPEClass clasz:Dumper.classes)
+			if (clasz.getName().equals(name))
 				return clasz;
 		MCPEClass clasz=ClassGeter.getClass(name);
 		return clasz;
 	}
-	
+
 	private MCPEVtable findVtable()
 	{
-		for(MCPEVtable clasz:Dumper.exploed)
-			if(clasz.getName().equals("_ZTV"+new Integer(name.length()).toString()+name))
+		for (MCPEVtable clasz:Dumper.exploed)
+			if (clasz.getName().equals(getZTVName(name)))
 				return clasz;
-		MCPEVtable vtable=VtableDumper.dump(path, "_ZTV"+new Integer(name.length()).toString()+name);
+		MCPEVtable vtable=VtableDumper.dump(path, getZTVName(name));
 		return vtable;
+	}
+
+	private String getZTVName(String mangledName)
+	{
+		String ret="_ZTV";
+		String[] names=mangledName.split("::");
+		for (String str:names)
+			ret = ret + ((new Integer(str.length()).toString() + str));
+		return ret;
+	}
+
+	private String getSaveName(String mangledName)
+	{
+		String ret=new String();
+		String[] names=mangledName.split("::");
+		boolean isFirstName=true;
+		for (String str:names)
+		{
+			if (isFirstName)
+			{
+				ret = ret + str;
+				isFirstName = false;
+			}
+			else
+				ret = ret + "$" + str;
+		}
+		return ret + ".h";
 	}
 
 	public void toVtableActivity(View view)
@@ -128,19 +155,19 @@ public class ClassActivity extends Activity
 		{
 			public void run()
 			{
-				MCPEVtable vtable=VtableDumper.dump(path, "_ZTV"+new Integer(name.length()).toString()+name);
+				MCPEVtable vtable=VtableDumper.dump(path, getZTVName(name));
 				if (vtable != null)
 					ClassActivity.this.toVtableActivity_(vtable);
 				dismissProgressDialog();
 			}
 		}.start();
 	}
-	
+
 	private boolean hasVtable()
 	{
-		String vtableThis="_ZTV"+new Integer(name.length()).toString()+name;
-		for(MCPESymbol symbol:Dumper.symbols)
-			if(symbol.getName().equals(vtableThis))
+		String vtableThis=getZTVName(name);
+		for (MCPESymbol symbol:Dumper.symbols)
+			if (symbol.getName().equals(vtableThis))
 				return true;
 		return false;
 	}
@@ -148,14 +175,14 @@ public class ClassActivity extends Activity
 	public void toVtableActivity_(MCPEVtable vtable)
 	{
 		Bundle bundle=new Bundle();
-		bundle.putString("name", "_ZTV"+new Integer(name.length()).toString()+name);
+		bundle.putString("name", getZTVName(name));
 		bundle.putString("path", path);
 		Dumper.exploed.addElement(vtable);
 		Intent intent=new Intent(this, VtableActivity.class);
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}
-	
+
 	com.gc.materialdesign.widgets.ProgressDialog dialog;
 
 	public void showLoadingProgressDialog()
@@ -163,20 +190,20 @@ public class ClassActivity extends Activity
 		dialog = new com.gc.materialdesign.widgets.ProgressDialog(this, getString(R.string.loading));
 		dialog.show();
 	}
-	
+
 	public void showSavingProgressDialog()
 	{
 		dialog = new com.gc.materialdesign.widgets.ProgressDialog(this, getString(R.string.saving));
 		dialog.show();
 	}
-	
+
 	public void dismissProgressDialog()
 	{
 		if (dialog != null)
 			dialog.dismiss();
 		dialog = null;
 	}
-	
+
 	static class ViewHolder 
     { 
 		public ImageView img;
@@ -188,14 +215,14 @@ public class ClassActivity extends Activity
 	private final class ItemClickListener implements OnItemClickListener
 	{
 		@Override
-		public void onItemClick(AdapterView<?> arg0, View view, int arg2,long arg3)
+		public void onItemClick(AdapterView<?> arg0, View view, int arg2, long arg3)
 		{
 			Bundle bundle=new Bundle();
-			bundle.putString("demangledName",(String)(((ViewHolder)view.getTag()).title.getText()));
-			bundle.putString("name",(String)(((ViewHolder)view.getTag()).info.getText()));
-			bundle.putInt("type",((ViewHolder)view.getTag()).type);
-			bundle.putString("filePath",path);
-			Intent intent=new Intent(ClassActivity.this,SymbolActivity.class);
+			bundle.putString("demangledName", (String)(((ViewHolder)view.getTag()).title.getText()));
+			bundle.putString("name", (String)(((ViewHolder)view.getTag()).info.getText()));
+			bundle.putInt("type", ((ViewHolder)view.getTag()).type);
+			bundle.putString("filePath", path);
+			Intent intent=new Intent(ClassActivity.this, SymbolActivity.class);
 			intent.putExtras(bundle);
 			startActivity(intent);
 		}
@@ -248,7 +275,7 @@ public class ClassActivity extends Activity
 			holder.img.setBackgroundResource((Integer)data.get(position).get("img")); 
 			holder.title.setText((String)data.get(position).get("title")); 
 			holder.info.setText((String)data.get(position).get("info"));
-			holder.type=((int)data.get(position).get("type"));
+			holder.type = ((int)data.get(position).get("type"));
 
 			return convertView; 
 		}

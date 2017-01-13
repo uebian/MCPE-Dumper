@@ -23,6 +23,9 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
+		
+		TextView textViewSavePath=(TextView)findViewById(R.id.mainactivityTextViewSavePath);
+		textViewSavePath.setText(getString(R.string.savedIn)+Environment.getExternalStorageDirectory().toString()+"/MCPEDumper/*");
 	}
 
 	public void chooseSystem(View view)
