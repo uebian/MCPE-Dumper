@@ -187,17 +187,17 @@ public class HeaderGenerator
 	private String getObjectDefinition(MCPESymbol symbol)
 	{
 		String name=symbol.getDemangledName().substring(mcpeClass.getName().length() + 2, symbol.getDemangledName().length());
-		return "static " + mcpeClass.getName() + " * " + name + ";	//" + symbol.getName();
+		return "static " + mcpeClass.getName() + " * " + name + ";";
 	}
 
 	private String getMethodDefinition(MCPESymbol symbol)
 	{
 		String name=symbol.getDemangledName().substring(mcpeClass.getName().length() + 2, symbol.getDemangledName().length());
 		if (name.startsWith("~" + className))
-			return name + ";	//" + symbol.getName();
+			return name + ";";
 		if (name.startsWith(className))
-			return name + ";	//" + symbol.getName();
-		return "void " + name + ";	//" + symbol.getName();
+			return name + ";";
+		return "void " + name + ";";
 	}
 
 	private String getVirtualMethodDefinition(MCPESymbol symbol)throws Exception
@@ -209,10 +209,10 @@ public class HeaderGenerator
 			throw new Exception("No owned vtable");
 		String name=symbol.getDemangledName().substring(mcpeClass.getName().length() + 2, symbol.getDemangledName().length());
 		if (name.startsWith("~" + className))
-			return "virtual " + name + ";	//" + symbol.getName();
+			return "virtual " + name + ";";
 		if (name.startsWith(className))
-			return "virtual " + name + ";	//" + symbol.getName();
-		return "virtual void " + name + ";	//" + symbol.getName();
+			return "virtual " + name + ";";
+		return "virtual void " + name + ";";
 	}
 
 	private MCPESymbol[] getObjects()
